@@ -60,6 +60,7 @@ async def add_legendary_skins():
 
 @router.message(Command(commands=["start","menu"]))
 async def menu(message: types.Message):
+    logger.info(f"[START] Name: {message.chat.full_name}, ChatId: {message.chat.id}")
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="🔍 Вибрати скін", switch_inline_query_current_chat="")],
     ])
@@ -68,6 +69,7 @@ async def menu(message: types.Message):
 
 @router.message(Command("skin"))
 async def on_selected_result(message: types.Message):
+    logger.info(f"[SKIN COMMAND] Name: {message.chat.full_name}, ChatId: {message.chat.id}, text: '{message.text}'")
     args = message.text.split(" ", 1)  # type: ignore[union-attr]
     if len(args) < 2:
         await message.answer("Будь ласка, вкажіть ID скіна після команди /skin")
@@ -104,10 +106,10 @@ async def on_selected_result(message: types.Message):
         parse_mode="HTML"
     )
 
-@router.message(F.text)
-async def echo(message: types.Message):
-    logger.info(f"[MESSAGE] Name: {message.chat.full_name}, ChatId: {message.chat.id}, text: '{message.text}'")
-    await message.answer(f"Ти написав: {message.text}\nСпробуй ввести /menu для початку пошуку скіна.")
+# @router.message(F.text)
+# async def echo(message: types.Message):
+#     logger.info(f"[MESSAGE] Name: {message.chat.full_name}, ChatId: {message.chat.id}, text: '{message.text}'")
+#     await message.answer(f"Ти написав: {message.text}\nСпробуй ввести /menu для початку пошуку скіна.")
 
 @router.inline_query()
 async def inline_handler(query: InlineQuery):
@@ -143,6 +145,7 @@ async def inline_handler(query: InlineQuery):
     
 @router.callback_query(F.data.startswith("add:"))
 async def handle_add(callback: CallbackQuery):
+    logger.info(f"[CALLBACK ADD] From: {callback.from_user.username}, data: '{callback.data}'")
     selected_id = callback.data.split("add:")[1]# type: ignore[union-attr]
     data_element = next((item for item in data if item['id'] == selected_id), None)
     if not data_element:
@@ -152,6 +155,7 @@ async def handle_add(callback: CallbackQuery):
         try:
             price = (await get_sale_prices(selected_id))[0]["price"]
         except Exception as e:
+            logger.error(f"Error getting price for skin {selected_id}: {str(e)}")
             await callback.message.answer(f"❌ Помилка при отриманні ціни: {str(e)}") # type: ignore[union-attr]
             return
         db.add_skin(selected_id, data_element.get("name", "Unknown Skin"), price, make_url_icon(data_element.get("iconUrl", "")))
@@ -160,6 +164,7 @@ async def handle_add(callback: CallbackQuery):
 
 @router.callback_query(F.data.startswith("del:"))
 async def handle_del(callback: CallbackQuery):
+    logger.info(f"[CALLBACK DEL] From: {callback.from_user.username}, data: '{callback.data}'")
     selected_id = callback.data.split("del:")[1]# type: ignore[union-attr]
 
     db.remove_skin(selected_id)
@@ -169,6 +174,7 @@ async def handle_del(callback: CallbackQuery):
 
 @router.callback_query(F.data.startswith("info:"))
 async def handle_info(callback: CallbackQuery):
+    logger.info(f"[CALLBACK INFO] From: {callback.from_user.username}, data: '{callback.data}'")
     selected_id = callback.data.split("info:")[1]# type: ignore[union-attr]
     prices = await get_sale_prices(selected_id)
     price_text = "\n".join([f"Url: {make_url_in_market(price['id'])}\nЦіна: {price['price']}\n" for price in prices])
