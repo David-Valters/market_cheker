@@ -1,0 +1,2370 @@
+[
+    {
+      "id": "019687e2-ea83-729f-889a-4d6f9ce50beb",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Ah sh*t",
+      "description": "Woke up, stubbed a toe, saw this face.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a4d6f9ce50beb.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a4d6f9ce50beb.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 384,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-3a179c35e01d",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Alien",
+      "description": "Just a flying saucer. Probably nothing.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a3a179c35e01d.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a3a179c35e01d.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 416,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b4-e9a8b4dae4e1",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Boom Body",
+      "description": "Still smiling. 100% ticking.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b4e9a8b4dae4e1.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b4e9a8b4dae4e1.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 66,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-d4354aadd517",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Don't Touch",
+      "description": "Spiky. Please respect the distance.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899d4354aadd517.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899d4354aadd517.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1852,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-1188881aec61",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Game Over",
+      "description": "You blinked. It ended.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a1188881aec61.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a1188881aec61.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1819,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-c29ec60c4741",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "I <3 VOID",
+      "description": "No explanation needed.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899c29ec60c4741.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899c29ec60c4741.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1732,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-fc4a2e3b07e6",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Illuminati",
+      "description": "Just a private club.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899fc4a2e3b07e6.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899fc4a2e3b07e6.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1831,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-eb8f0add73e5",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Lovebones",
+      "description": "Romantic and a little cursed. Great combo.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899eb8f0add73e5.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899eb8f0add73e5.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1907,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b5-138fed591c3c",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Meltdown",
+      "description": "Too much energy. Zero control.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b5138fed591c3c.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b5138fed591c3c.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 12,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b4-ff4f81bc70bd",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "No Thanks",
+      "description": "Says what you’re thinking. All day.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b4ff4f81bc70bd.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b4ff4f81bc70bd.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 71,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea82-708b-b747-53ba64096521",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Reactor",
+      "description": "Toxic? Maybe. Glowing? Definitely.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea82708bb74753ba64096521.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea82708bb74753ba64096521.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1899,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-2524ae06dbe5",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Smile",
+      "description": "All 32 teeth. What's the joke?",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a2524ae06dbe5.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a2524ae06dbe5.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Badge lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 395,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c7-caec-7990-b533-83ea231c90af",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Beta",
+      "description": "Early days, wild times.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c7caec7990b53383ea231c90af.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c7caec7990b53383ea231c90af.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Beta test collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 23282,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c7-caec-7fca-bf13-b81dfc8fe382",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Space Day",
+      "description": "",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c7caec7fcabf13b81dfc8fe382.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c7caec7fcabf13b81dfc8fe382.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cosmonautics day collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 696,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b5-1bbc1be87033",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Bloom",
+      "description": "Starts cute. Evolves with chaos.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b51bbc1be87033.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b51bbc1be87033.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 33,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-cb85107c59c2",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Crybaby",
+      "description": "Too soft for this world. Buffs your guilt per hit.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899cb85107c59c2.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899cb85107c59c2.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2568,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-04584ed4d4df",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Frostbite",
+      "description": "Colder than your ex. Still fine tho.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a04584ed4d4df.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a04584ed4d4df.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2553,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-dfb648739e16",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Ghosted",
+      "description": "Tried to summon help. Got haunted instead.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899dfb648739e16.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899dfb648739e16.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2653,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-f2067adb7a18",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Goop",
+      "description": "Will 1v5, then melt from eye contact.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899f2067adb7a18.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899f2067adb7a18.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2548,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-2f280796b2e8",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Kitty",
+      "description": "Too cute to trust. Too quiet to ignore.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a2f280796b2e8.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a2f280796b2e8.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 716,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-b1049c7bf5b1",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Lil Bloom",
+      "description": "Cat. Flower. Emotional damage pending.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899b1049c7bf5b1.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899b1049c7bf5b1.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2662,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-405bb31f90ef",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Lovepunch",
+      "description": "Hits you with pure affection. Then again.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a405bb31f90ef.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a405bb31f90ef.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 724,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b5-04c3613368ed",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Shiny",
+      "description": "Shiny thing go brr.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b504c3613368ed.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b504c3613368ed.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 34,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-18663bb9853e",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Unstable",
+      "description": "Has fire damage. And feelings.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a18663bb9853e.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a18663bb9853e.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 716,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-57237dbd0d5a",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Watchy",
+      "description": "Knows your past. Judging your present.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a57237dbd0d5a.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a57237dbd0d5a.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 161,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b4-f0b2173b58af",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Zappy",
+      "description": "Built up static. And rage.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b4f0b2173b58af.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b4f0b2173b58af.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Cute lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 157,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c3-d1a0-71b1-84ee-85e56bedab9c",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Donut",
+      "description": "Sweet enough to remember. Bright enough to stand out.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c3d1a071b184ee85e56bedab9c.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c3d1a071b184ee85e56bedab9c.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Early access collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 47274,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c3-d1a0-72e9-a43f-1f254acba5bf",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Eye",
+      "description": "Always watching. Always knowing.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c3d1a072e9a43f1f254acba5bf.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c3d1a072e9a43f1f254acba5bf.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Early access collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 3115,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c3-d1a0-79e4-a5c5-3151a94d312c",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Gold",
+      "description": "Shine bright, but keep it cool.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c3d1a079e4a5c53151a94d312c.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c3d1a079e4a5c53151a94d312c.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Early access collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 14259,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c3-d1a0-772a-81f6-cebdc81353cf",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Platinum",
+      "description": "Doesn’t blink, doesn’t fade. Pure platinum.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c3d1a0772a81f6cebdc81353cf.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c3d1a0772a81f6cebdc81353cf.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Early access collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 4788,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c3-d1a0-7cb1-9f5b-86c52c4cd237",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Recruiter",
+      "description": "Feels like you’re not playing, but running a startup.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c3d1a07cb19f5b86c52c4cd237.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c3d1a07cb19f5b86c52c4cd237.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Early access collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 3482,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c3-d1a0-7019-af70-65c3ab31b0b8",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Singularity",
+      "description": "Matter, time, pixels… Everything fades, but you remain.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c3d1a07019af7065c3ab31b0b8.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c3d1a07019af7065c3ab31b0b8.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Early access collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 10319,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c3-d1a0-7007-ae94-f038ffcfac58",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Spectrum",
+      "description": "All colors in one palette. And they’re all yours.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c3d1a07007ae94f038ffcfac58.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c3d1a07007ae94f038ffcfac58.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Early access collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 20464,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-bb9c82044029",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Berry",
+      "description": "Small, round, full of drama.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899bb9c82044029.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899bb9c82044029.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2369,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-35a850dbde97",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Boba",
+      "description": "All sugar. No mercy.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a35a850dbde97.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a35a850dbde97.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2283,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-e5c5238d53d2",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Cucumber",
+      "description": "Just a cucumber.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899e5c5238d53d2.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899e5c5238d53d2.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2382,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b5-0dc71216b7ee",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Fried",
+      "description": "Crispy edges. Unresolved anger.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b50dc71216b7ee.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b50dc71216b7ee.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 30,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b4-fa4382f3d541",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Juicy",
+      "description": "Sweet. Suspicious. Probably bait.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b4fa4382f3d541.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b4fa4382f3d541.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 130,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-bdeea77e83da",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Minty",
+      "description": "Fresh in the mouth. Dangerous in the lobby.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899bdeea77e83da.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899bdeea77e83da.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2302,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-0d066eebf1f4",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Orange",
+      "description": "Citrus-powered chaos.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a0d066eebf1f4.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a0d066eebf1f4.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2368,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b4-e6ff3a1a7477",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Peel me",
+      "description": "Soft, round, and ready to start problems.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b4e6ff3a1a7477.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b4e6ff3a1a7477.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 715,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-497c18b81071",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Pumpkin",
+      "description": "Pumpkin at home. Jump scare in the match.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a497c18b81071.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a497c18b81071.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 694,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-f91f1491d889",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Sushi",
+      "description": "Just fish and rice. No extreme.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899f91f1491d889.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899f91f1491d889.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2332,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-d140fe0824c1",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Tomato",
+      "description": "Technically a fruit. Emotionally unstable.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899d140fe0824c1.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899d140fe0824c1.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2233,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-20ad448eeb22",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Watermelon",
+      "description": "Green outside and red inside. Summer vibe.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a20ad448eeb22.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a20ad448eeb22.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Food lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 2390,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-f6df71cd4f96",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Bombardiro Crocodilo",
+      "description": "Pure brainrot energy. Welcome to 3AM TikTok.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899f6df71cd4f96.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899f6df71cd4f96.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1167,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-b6b80a9508eb",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Hodler",
+      "description": "Never sold. Never will. Diamond hands since day one.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899b6b80a9508eb.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899b6b80a9508eb.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1293,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b5-0aadeb54010b",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Paranoid",
+      "description": "He sees everything. Especially the stuff he shouldn't.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b50aadeb54010b.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b50aadeb54010b.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 10,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-e30e977e3f4f",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Pedro",
+      "description": "Moves like nobody's watching. Even when everyone is.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899e30e977e3f4f.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899e30e977e3f4f.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1237,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-31c3219a09df",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Peepo",
+      "description": "Deep thoughts. Shallow logic. Still smarter than you.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a31c3219a09df.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a31c3219a09df.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 606,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b4-e3a08aa33b0f",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "SCAM",
+      "description": "Will rug you and dance at the funeral.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b4e3a08aa33b0f.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b4e3a08aa33b0f.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 72,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-cecc6cf8ab98",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Sigma",
+      "description": "Silent, unbothered, two steps ahead. Always.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899cecc6cf8ab98.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899cecc6cf8ab98.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1302,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-1cec7fa07995",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Staredown",
+      "description": "You just said something real dumb. Now he’s processing it.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a1cec7fa07995.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a1cec7fa07995.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 258,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b5-1fae409131e2",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Superintelligence",
+      "description": "Brain? Visible. Thoughts? Questionable.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b51fae409131e2.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b51fae409131e2.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 18,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-0a78115dc9b2",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Swagged out",
+      "description": "Too much drip. Zero explanation.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a0a78115dc9b2.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a0a78115dc9b2.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 280,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b4-f772612a123b",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Troll Face",
+      "description": "You thought it was loading. He thought it was funny.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b4f772612a123b.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b4f772612a123b.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 53,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-45888e79855d",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Wifey",
+      "description": "Too powerful for full resolution. You already know why.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a45888e79855d.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a45888e79855d.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Meme lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 277,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019731f4-2959-734f-bcf5-fdbce3343189",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Psychodelic",
+      "description": "Psychodelic",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019731f42959734fbcf5fdbce3343189.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019731f42959734fbcf5fdbce3343189.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Notcoin birthday collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 400,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019731f2-0c05-7437-8f91-12c8adc2ab45",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Spiral",
+      "description": "Spiral",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019731f20c0574378f9112c8adc2ab45.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019731f20c0574378f9112c8adc2ab45.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Notcoin birthday collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1199,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-3d9a515b2d4d",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Be Honest",
+      "description": "You have 3 seconds to answer. Choose wisely.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a3d9a515b2d4d.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a3d9a515b2d4d.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1254,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-03eaf0582c48",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Disco",
+      "description": "Can’t stop dancing. Try to keep up.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a03eaf0582c48.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a03eaf0582c48.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 4042,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b5-0262dd04c368",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Final star",
+      "description": "Sparkly. Serious. Probably won’t miss.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b50262dd04c368.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b50262dd04c368.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 53,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-1625e3f9f423",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Hamster",
+      "description": "You still calling people like it’s 2010?",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a1625e3f9f423.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a1625e3f9f423.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1262,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b5-16f99908830d",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Kirby",
+      "description": "Cute. But bites without warning.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b516f99908830d.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b516f99908830d.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 67,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-da85d8f571ce",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Looped love",
+      "description": "Stuck in a love loop. And now you are too.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899da85d8f571ce.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899da85d8f571ce.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 4201,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-edb4f3c3e2eb",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Not Stupid",
+      "description": "NOT STUPID. NOT STUPID.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899edb4f3c3e2eb.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899edb4f3c3e2eb.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 4180,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-c51f88a02024",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Oopsie",
+      "description": "Kinda cute. Kinda explosive. You’ll find out.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899c51f88a02024.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899c51f88a02024.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 4325,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-52738b4cc956",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Radar",
+      "description": "You’re on the map now. And someone’s watching.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a52738b4cc956.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a52738b4cc956.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 318,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-889a-298331c212a1",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Rainy",
+      "description": "100% gold. 0% stress.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f889a298331c212a1.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f889a298331c212a1.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 1215,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea84-70c8-a9b4-ef3219220507",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Screamer",
+      "description": "Too cute to trust. Might heal you, might ruin you.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea8470c8a9b4ef3219220507.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea8470c8a9b4ef3219220507.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 332,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019687e2-ea83-729f-8899-ac99a6427297",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Shroom",
+      "description": "Looks goofy. Plays hard.",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019687e2ea83729f8899ac99a6427297.png",
+      "tags": [
+        "type:SKIN;rarity:common"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019687e2ea83729f8899ac99a6427297.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Pixel lootbox collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 4178,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c7-caec-76a8-ad69-e50d4b1155e8",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Champion",
+      "description": "",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c7caec76a8ad69e50d4b1155e8.png",
+      "tags": [
+        "type:SKIN;rarity:legendary"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c7caec76a8ad69e50d4b1155e8.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Season 0 collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 200,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c7-caec-701d-af34-bd4a8b34f4e1",
+      "createdAt": "2025-07-04T16:07:15.16051Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Hero#2",
+      "description": "",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c7caec701daf34bd4a8b34f4e1.png",
+      "tags": [
+        "type:SKIN;rarity:epic"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c7caec701daf34bd4a8b34f4e1.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Season 0 collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 765,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    },
+    {
+      "id": "019662c7-caec-7adf-a7c9-af60befe9ddc",
+      "createdAt": "2025-07-04T16:42:54.880752Z",
+      "gameId": 2,
+      "gameName": "Void",
+      "name": "Survivor#2",
+      "description": "",
+      "typeName": "item",
+      "displayTypeName": "SKIN",
+      "iconUrl": "notgames/2/icons/019662c7caec7adfa7c9af60befe9ddc.png",
+      "tags": [
+        "type:SKIN;rarity:rare"
+      ],
+      "storeImages": [
+        "notgames/2/store_images/019662c7caec7adfa7c9af60befe9ddc.png"
+      ],
+      "bundle": "",
+      "marketable": true,
+      "storeTags": [
+        ""
+      ],
+      "gameItemCollectionName": "Season 0 collection",
+      "hidden": false,
+      "tradable": true,
+      "supply": 3342,
+      "appFiles": [
+        ""
+      ],
+      "gameOnly": false,
+      "promo": "",
+      "rarity": 0
+    }
+  ]
