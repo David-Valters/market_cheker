@@ -19,7 +19,7 @@ from typing import List
 async def get_sale_prices(id: str) -> List[dict]:
     url = "https://api.tgmrkt.io/api/v1/notgames/saling"
     headers = {
-        "Authorization": config["mrkt_token"],
+        "Authorization": db.get_token() or "",  # type: ignore
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:137.0) Gecko/20100101 Firefox/137.0",
         "Origin": "https://cdn.tgmrkt.io",
@@ -64,6 +64,16 @@ async def get_sale_prices(id: str) -> List[dict]:
 
 from aiogram import Bot
 async def loop(bot: Bot) -> None:
+    logger.info("Starting skin price check loop...")
+    if not db.get_token():
+        logger.error("Token is not set. Please set the token using /token command.")
+        await bot.send_message(
+            chat_id=config["chat_id"],  # type: ignore
+            text="❗ Токен не встановлено. Будь ласка, встановіть токен за допомогою команди /token."
+        )
+    while not db.get_token():
+        logger.info("Waiting for token to be set...")
+        await asyncio.sleep(10)
     while True:
         skin = db.get_next_skin_to_check()
         if not skin:

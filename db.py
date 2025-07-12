@@ -22,7 +22,13 @@ def init_db():
             icon_url TEXT
         )
     """)
-
+    #table set token
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS config (
+            key TEXT PRIMARY KEY,
+            value TEXT NOT NULL
+        )
+    """)
     # Перевірити, чи таблиця порожня
     cursor.execute("SELECT COUNT(*) FROM skins")
     count = cursor.fetchone()[0]
@@ -31,6 +37,24 @@ def init_db():
     
     if count == 0:
         return True
+
+#set token
+def set_token(token: str):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("INSERT OR REPLACE INTO config (key, value) VALUES (?, ?)", ("mrkt_token", token))
+    conn.commit()
+    conn.close()
+
+def get_token() -> Optional[str]:
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT value FROM config WHERE key = ?", ("mrkt_token",))
+    row = cursor.fetchone()
+    conn.close()
+    if row:
+        return row[0]
+    return None
 
 def add_skin(skin_id: str, name: str, price: float, icon_url: str):
     conn = sqlite3.connect(DB_PATH)

@@ -179,3 +179,13 @@ async def handle_info(callback: CallbackQuery):
     prices = await get_sale_prices(selected_id)
     price_text = "\n".join([f"Url: {make_url_in_market(price['id'])}\nЦіна: {price['price']}\n" for price in prices])
     await callback.message.answer(f"Ціни на скіни:\n{price_text}") # type: ignore[union-attr]
+
+@router.message(Command("token"))
+async def set_token(message: types.Message):
+    args = message.text.split(" ", 1)  # type: ignore[union-attr]
+    if len(args) < 2:
+        await message.answer("Будь ласка, вкажіть token скіна після команди /token (наприклад, /token 1234567890)")
+        return    
+    new_token = args[1].strip()
+    db.set_token(new_token)
+    await message.answer(f"✅ Токен встановлено")
