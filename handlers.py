@@ -7,6 +7,7 @@ from aiogram.utils.formatting import Text, Bold
 from config import config 
 from cheker import get_lowest_price_lots
 import logging
+import asyncio
 
 logger = logging.getLogger(__name__)
 
@@ -50,6 +51,11 @@ class AccessControlMiddleware(BaseMiddleware):
         return await handler(event, data)
 
 async def add_legendary_skins():
+    if not db.get_token():
+        logger.error("Token is not set.")
+    while not db.get_token():
+        logger.info("Waiting for token to be set...")
+        await asyncio.sleep(10)
     legendary_skin = [skin for skin in data if "rarity:legendary" in skin["tags"][0]]
     for count, item in enumerate(legendary_skin):
         skin_id = item["id"]

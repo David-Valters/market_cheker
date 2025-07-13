@@ -89,12 +89,17 @@ async def check(skin:dict) -> tuple[int|None, str, List[str]]:
 from aiogram import Bot
 async def loop(bot: Bot) -> None:
     logger.info("Starting skin price check loop...")
+    #sem mes bot runing
     if not db.get_token():
         logger.error("Token is not set. Please set the token using /token command.")
         await bot.send_message(
             chat_id=config["chat_id"],  # type: ignore
             text="❗ Токен не встановлено. Будь ласка, встановіть токен за допомогою команди /token."
         )
+    await bot.send_message(
+        chat_id=config["chat_id"],  # type: ignore
+        text="✅ Бот запущено"
+    )
     while not db.get_token():
         logger.info("Waiting for token to be set...")
         await asyncio.sleep(10)
@@ -140,11 +145,11 @@ async def loop(bot: Bot) -> None:
                     text=f"HTTP error while checking skin {skin['skin_id']}: {e}"
                 )
                 await asyncio.sleep(120)
-        # except Exception as e:
-        #     logger.error(f"Error checking skin {skin["skin_id"]}: {e}")
-        #     await bot.send_message(
-        #         chat_id=config["chat_id"], #type: ignore
-        #         text=f"Error checking skin {skin["skin_id"]}: {e}"
-        #     )
-        #     await asyncio.sleep(180)  
+        except Exception as e:
+            logger.error(f"Error checking skin {skin["skin_id"]}: {e}")
+            await bot.send_message(
+                chat_id=config["chat_id"], #type: ignore
+                text=f"Error checking skin {skin["skin_id"]}: {e}"
+            )
+            await asyncio.sleep(180)  
         await asyncio.sleep(20)  # Wait before checking the next skin
