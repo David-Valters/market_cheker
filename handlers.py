@@ -5,6 +5,7 @@ from aiogram.types import CallbackQuery
 import json
 from aiogram.utils.formatting import Text, Bold
 from config import config 
+from cheker import get_lowest_price_lots
 import logging
 
 logger = logging.getLogger(__name__)
@@ -26,7 +27,7 @@ from aiogram.types import TelegramObject
 from typing import Callable, Awaitable, Dict, Any
 import uuid
 import db
-from cheker import get_sale_prices, make_url_in_market, make_url_icon
+from cheker import  make_url_in_market, make_url_icon
 
 router = Router()
 
@@ -52,7 +53,9 @@ async def add_legendary_skins():
     legendary_skin = [skin for skin in data if "rarity:legendary" in skin["tags"][0]]
     for count, item in enumerate(legendary_skin):
         skin_id = item["id"]
-        price = (await get_sale_prices(skin_id))[0]["price"]
+        # price = (await get_sale_prices(skin_id))[0]["price"]
+        lot = await get_lowest_price_lots(skin_id)
+        price = lot[0]["salePrice"]
         db.add_skin(skin_id, item.get("name", "Unknown Skin"), price, make_url_icon(item.get("iconUrl", "")))
         logger.info(f"Done {count+1}/{len(legendary_skin)}: {item['name']} ({skin_id}) - {price}")
 
@@ -153,7 +156,9 @@ async def handle_add(callback: CallbackQuery):
         return
     else:
         try:
-            price = (await get_sale_prices(selected_id))[0]["price"]
+            # price = (await get_sale_prices(selected_id))[0]["price"]
+            lot = await get_lowest_price_lots(selected_id)
+            price = lot[0]["salePrice"]
         except Exception as e:
             logger.error(f"Error getting price for skin {selected_id}: {str(e)}")
             await callback.message.answer(f"❌ Помилка при отриманні ціни: {str(e)}") # type: ignore[union-attr]
@@ -175,10 +180,11 @@ async def handle_del(callback: CallbackQuery):
 @router.callback_query(F.data.startswith("info:"))
 async def handle_info(callback: CallbackQuery):
     logger.info(f"[CALLBACK INFO] From: {callback.from_user.username}, data: '{callback.data}'")
-    selected_id = callback.data.split("info:")[1]# type: ignore[union-attr]
-    prices = await get_sale_prices(selected_id)
-    price_text = "\n".join([f"Url: {make_url_in_market(price['id'])}\nЦіна: {price['price']}\n" for price in prices])
-    await callback.message.answer(f"Ціни на скіни:\n{price_text}") # type: ignore[union-attr]
+    await callback.answer(f"Поки що виключив, як оприділимось з форматом повідомлення, то зроблю, щоб закожен раз тут не міняти", show_alert=True)
+    # selected_id = callback.data.split("info:")[1]# type: ignore[union-attr]
+    # prices = await get_sale_prices(selected_id)
+    # price_text = "\n".join([f"Url: {make_url_in_market(price['id'])}\nЦіна: {price['price']}\n" for price in prices])
+    # await callback.message.answer(f"Ціни на скіни:\n{price_text}") # type: ignore[union-attr]
 
 @router.message(Command("token"))
 async def set_token(message: types.Message):

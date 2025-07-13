@@ -1,8 +1,10 @@
 # from time import sleep
 import asyncio
+from datetime import datetime, timedelta
 from config import config
 import db
 import logging
+from utils import html_link
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +18,7 @@ def make_url_icon(url: str) -> str:
 import httpx
 from typing import List
 
-async def get_sale_prices(id: str) -> List[dict]:
+async def get_lowest_price_lots(id: str) -> List[dict]:
     url = "https://api.tgmrkt.io/api/v1/notgames/saling"
     headers = {
         "Authorization": db.get_token() or "",  # type: ignore
@@ -52,15 +54,37 @@ async def get_sale_prices(id: str) -> List[dict]:
 
     for item in items[:3]:
         price = item.get("salePrice")
-        item_id = item.get("id")
         if price is not None:
-            result.append({
-                "id": item_id,
-                "price": round(float(price) / 1_000_000_000, 2)
-            })
+            r=item
+            r["salePrice"] = round(float(price) / 1_000_000_000, 2)
+            result.append(r)
 
     return result
 
+
+async def check(skin:dict) -> tuple[int|None, str, List[str]]:
+    skin_id = skin["skin_id"]
+    new_lots = await get_lowest_price_lots(skin_id)
+    old_price = skin["price"]
+    current_price = new_lots[0]["salePrice"]
+    new_lots_id = [lot["id"] for lot in new_lots[:3]]
+    
+    if current_price == old_price:
+        return None, "", new_lots_id
+    
+    past_lots_id = db.get_top_lots(skin_id)
+    mes = [
+        skin["name"],
+        f"Price changed from {old_price} > {current_price}."  if past_lots_id and past_lots_id[0] == new_lots_id[0] else 
+        f"The {html_link("skin",make_url_in_market(skin_id))} was most likely purchased for {old_price}",
+        "\nІнші ціни:",
+        *[
+            #1: 3.08 (#22)  
+            f"{i+1}. {lot['salePrice']} (#{html_link(lot['serial'], make_url_in_market(lot['id']) )}) {"! N E W !" if lot['id'] not in past_lots_id else ""}\n" 
+            for i, lot in enumerate(new_lots)
+         ]    
+    ]    
+    return current_price, "\n".join(mes), new_lots_id
 
 from aiogram import Bot
 async def loop(bot: Bot) -> None:
@@ -78,33 +102,49 @@ async def loop(bot: Bot) -> None:
         skin = db.get_next_skin_to_check()
         if not skin:
             logger.info("No more skins to check.")
-            await asyncio.sleep(60)  # Wait before checking again
+            await asyncio.sleep(10)  # Wait before checking again
             continue
         try:
-            prices = await get_sale_prices(skin["skin_id"])
-            current_price = prices[0]["price"]
-            new_price = None
-            old_price = skin["price"]
-            if current_price != old_price:
-                new_price = current_price
-                difference = new_price - old_price
-                difference_str = f"{difference:+.2f}"  # Format with sign
-                other_price_text = "Інші ціни:\n"+"\n".join([f"{count+1}: {price['price']}\n" for count, price in enumerate(prices)])
-                
+            new_price, mes, new_lots_id = await check(skin)
+            if new_price:
                 await bot.send_photo(
                     photo=skin["icon_url"],
-                    chat_id=config["chat_id"], #type: ignore
-                    caption=f"Skin {skin['name']} ({skin["skin_id"]}) price changed from {old_price} to {new_price} ({difference_str}).\nCheck it out: {make_url_in_market(prices[0]["id"])}\n{other_price_text}",
-                )
-                logger.info(f"Skin {skin['skin_id']} price changed from {old_price} to {new_price} ({difference_str}).")
+                    chat_id=config["chat_id"],  # type: ignore
+                    caption=mes,
+                    parse_mode="HTML"
+                )                
+                logger.info(f"Skin {skin['skin_id']} price changed to {new_price}).")
             else:
-                logger.info(f"Skin {skin["skin_id"]} price has not changed: {old_price}")
+                logger.info(f"Skin {skin["skin_id"]} price has not changed")
             db.mark_skin_checked(skin["skin_id"],new_price)
-        except Exception as e:
-            logger.error(f"Error checking skin {skin["skin_id"]}: {e}")
-            await bot.send_message(
-                chat_id=config["chat_id"], #type: ignore
-                text=f"Error checking skin {skin["skin_id"]}: {e}"
-            )
-            await asyncio.sleep(160)  
+            db.save_top_lots(skin['skin_id'], new_lots_id)
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == 401:
+                current_token = db.get_token()
+                last_notif_time = None
+                while current_token == db.get_token():
+                    now = datetime.now()
+                    if last_notif_time is None or (now - last_notif_time) > timedelta(minutes=1):             
+                        logger.error("📛Expired TOKEN📛 ")
+                        await bot.send_message(
+                            chat_id=config["chat_id"],  # type: ignore
+                            text="📛Expired TOKEN📛 "
+                        )
+                        last_notif_time = now
+                    await asyncio.sleep(10)
+                continue
+            else:
+                logger.error(f"HTTP error while checking skin {skin['skin_id']}: {e}")
+                await bot.send_message(
+                    chat_id=config["chat_id"],  # type: ignore
+                    text=f"HTTP error while checking skin {skin['skin_id']}: {e}"
+                )
+                await asyncio.sleep(120)
+        # except Exception as e:
+        #     logger.error(f"Error checking skin {skin["skin_id"]}: {e}")
+        #     await bot.send_message(
+        #         chat_id=config["chat_id"], #type: ignore
+        #         text=f"Error checking skin {skin["skin_id"]}: {e}"
+        #     )
+        #     await asyncio.sleep(180)  
         await asyncio.sleep(20)  # Wait before checking the next skin

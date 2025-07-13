@@ -2,6 +2,8 @@ import sqlite3
 from typing import List, Optional
 from datetime import datetime
 import logging
+import json
+
 logger = logging.getLogger(__name__)
 
 DB_PATH = "base.db"
@@ -29,6 +31,13 @@ def init_db():
             value TEXT NOT NULL
         )
     """)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS top_lots (
+            skin_id TEXT PRIMARY KEY,
+            lot_ids TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+        )
+    """)
     # Перевірити, чи таблиця порожня
     cursor.execute("SELECT COUNT(*) FROM skins")
     count = cursor.fetchone()[0]
@@ -40,6 +49,7 @@ def init_db():
 
 #set token
 def set_token(token: str):
+    logger.info(f"Setting new token.")
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("INSERT OR REPLACE INTO config (key, value) VALUES (?, ?)", ("mrkt_token", token))
@@ -128,3 +138,30 @@ def get_skin(skin_id: str) -> Optional[dict]:
             "icon_url": row[4]
         }
     return None
+
+def save_top_lots(skin_id: str, lot_ids: list[str]):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    lot_ids_json = json.dumps(lot_ids)
+    now = datetime.now().isoformat()
+
+    cursor.execute("""
+        INSERT OR REPLACE INTO top_lots (skin_id, lot_ids, updated_at)
+        VALUES (?, ?, ?)
+    """, (skin_id, lot_ids_json, now))
+
+    conn.commit()
+    conn.close()
+
+def get_top_lots(skin_id: str) -> list[str]:
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT lot_ids FROM top_lots WHERE skin_id = ?", (skin_id,))
+    row = cursor.fetchone()
+    conn.close()
+
+    if row:
+        return json.loads(row[0])
+    return []
