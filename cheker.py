@@ -5,6 +5,7 @@ from config import config
 import db
 import logging
 from utils import html_link
+import traceback
 
 logger = logging.getLogger(__name__)
 
@@ -52,7 +53,7 @@ async def get_lowest_price_lots(id: str) -> List[dict]:
     items = data.get("gameItems", [])
     result: List[dict] = []
 
-    for item in items[:3]:
+    for item in items[:10]:
         price = item.get("salePrice")
         if price is not None:
             r=item
@@ -64,10 +65,10 @@ async def get_lowest_price_lots(id: str) -> List[dict]:
 
 async def check(skin:dict) -> tuple[int|None, str, List[str]]:
     skin_id = skin["skin_id"]
-    new_lots = await get_lowest_price_lots(skin_id)
+    new_lots = (await get_lowest_price_lots(skin_id))[:5]
     old_price = skin["price"]
     current_price = new_lots[0]["salePrice"]
-    new_lots_id = [lot["id"] for lot in new_lots[:3]]
+    new_lots_id = [lot["id"] for lot in new_lots]
     
     if current_price == old_price:
         return None, "", new_lots_id
@@ -129,7 +130,7 @@ async def loop(bot: Bot) -> None:
                 last_notif_time = None
                 while current_token == db.get_token():
                     now = datetime.now()
-                    if last_notif_time is None or (now - last_notif_time) > timedelta(minutes=1):             
+                    if last_notif_time is None or (now - last_notif_time) > timedelta(minutes=10):             
                         logger.error("📛Expired TOKEN📛 ")
                         await bot.send_message(
                             chat_id=config["chat_id"],  # type: ignore
@@ -146,10 +147,11 @@ async def loop(bot: Bot) -> None:
                 )
                 await asyncio.sleep(120)
         except Exception as e:
-            logger.error(f"Error checking skin {skin["skin_id"]}: {e}")
+            tb = traceback.format_exc()
+            logger.error(f"Error checking skin {skin["skin_id"]}: {e}\n\n{tb}")
             await bot.send_message(
                 chat_id=config["chat_id"], #type: ignore
-                text=f"Error checking skin {skin["skin_id"]}: {e}"
+                text=f"Error checking skin {skin["skin_id"]}: {e}\n\n{tb}"
             )
             await asyncio.sleep(180)  
         await asyncio.sleep(20)  # Wait before checking the next skin

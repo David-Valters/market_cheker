@@ -1,11 +1,13 @@
 from calendar import c
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
+from aiogram.types import LinkPreviewOptions
 #read json from data.json
 import json
 from aiogram.utils.formatting import Text, Bold
 from config import config 
 from cheker import get_lowest_price_lots
+from utils import html_link
 import logging
 import asyncio
 
@@ -186,11 +188,22 @@ async def handle_del(callback: CallbackQuery):
 @router.callback_query(F.data.startswith("info:"))
 async def handle_info(callback: CallbackQuery):
     logger.info(f"[CALLBACK INFO] From: {callback.from_user.username}, data: '{callback.data}'")
-    await callback.answer(f"Поки що виключив, як оприділимось з форматом повідомлення, то зроблю, щоб закожен раз тут не міняти", show_alert=True)
-    # selected_id = callback.data.split("info:")[1]# type: ignore[union-attr]
-    # prices = await get_sale_prices(selected_id)
-    # price_text = "\n".join([f"Url: {make_url_in_market(price['id'])}\nЦіна: {price['price']}\n" for price in prices])
-    # await callback.message.answer(f"Ціни на скіни:\n{price_text}") # type: ignore[union-attr]
+    skin_id = callback.data.split("info:")[1]# type: ignore[union-attr]
+    new_lots = await get_lowest_price_lots(skin_id)
+    mes = [
+        *[
+            #1: 3.08 (#22)  
+            f"{i+1}. {lot['salePrice']} (#{html_link(lot['serial'], make_url_in_market(lot['id']) )})\n" 
+            for i, lot in enumerate(new_lots)
+         ]    
+    ]
+    mes_text = "\n".join(mes)
+    await callback.answer()
+    await callback.message.reply( # type: ignore[union-attr]
+        text=mes_text,
+        parse_mode="HTML",
+        link_preview_options = LinkPreviewOptions(is_disabled=True),
+    )
 
 @router.message(Command("token"))
 async def set_token(message: types.Message):
