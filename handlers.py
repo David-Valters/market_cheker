@@ -1,4 +1,3 @@
-from calendar import c
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 from aiogram.types import LinkPreviewOptions
@@ -6,10 +5,12 @@ from aiogram.types import LinkPreviewOptions
 import json
 from aiogram.utils.formatting import Text, Bold
 from config import config 
-from cheker import get_lowest_price_lots
-from utils import html_link
+from cheker import  get_lowest_price_lots
+import cheker
+from utils import *
 import logging
 import asyncio
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +21,7 @@ data = {}
 with open(data_file, 'r') as file:
     data = json.load(file)
 
-from aiogram import Bot, Dispatcher, types
+from aiogram import types
 from aiogram.types import InlineQueryResultArticle, InputTextMessageContent, InlineQuery
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.filters.command import Command
@@ -31,6 +32,7 @@ from typing import Callable, Awaitable, Dict, Any
 import uuid
 import db
 from cheker import  make_url_in_market, make_url_icon
+import cheker
 
 router = Router()
 
@@ -214,3 +216,15 @@ async def set_token(message: types.Message):
     new_token = args[1].strip()
     db.set_token(new_token)
     await message.answer(f"✅ Токен встановлено")
+
+
+@router.message(Command("ping"))
+async def ping(message: types.Message):
+    if not cheker.datetime_lascheck:
+        await message.answer("Бот ще не здійснював перевірку цін.")
+        return
+
+    delta = datetime.now() - cheker.datetime_lascheck
+    time_text = format_timedelta(delta)
+
+    await message.answer(f"Бот останній раз перевіряв ціни {time_text}.")

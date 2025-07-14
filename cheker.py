@@ -8,6 +8,7 @@ from utils import html_link
 import traceback
 
 logger = logging.getLogger(__name__)
+datetime_lascheck = None
 
 def make_url_in_market(id):
     id=id.replace("-", "")
@@ -124,6 +125,8 @@ async def loop(bot: Bot) -> None:
                 logger.info(f"Skin {skin["skin_id"]} price has not changed")
             db.mark_skin_checked(skin["skin_id"],new_price)
             db.save_top_lots(skin['skin_id'], new_lots_id)
+            global datetime_lascheck
+            datetime_lascheck = datetime.now()
         except httpx.HTTPStatusError as e:
             if e.response.status_code == 401:
                 current_token = db.get_token()
@@ -146,12 +149,19 @@ async def loop(bot: Bot) -> None:
                     text=f"HTTP error while checking skin {skin['skin_id']}: {e}"
                 )
                 await asyncio.sleep(120)
+        except httpx.ReadTimeout:
+            logger.warning(f"⏱ TIMEOUT: Запит до tgmrkt.io завис на skin_id {skin['skin_id']}")
+            await bot.send_message(config["chat_id"], text=f"⚠️ TIMEOUT при перевірці {skin['skin_id']}") # type: ignore
+            await asyncio.sleep(20)
+            continue
         except Exception as e:
             tb = traceback.format_exc()
             logger.error(f"Error checking skin {skin["skin_id"]}: {e}\n\n{tb}")
-            await bot.send_message(
-                chat_id=config["chat_id"], #type: ignore
-                text=f"Error checking skin {skin["skin_id"]}: {e}\n\n{tb}"
-            )
+            text=f"Error checking skin {skin["skin_id"]}: {e}\n\n{tb}"
+            for i in range(0, len(text), 4096):
+                await bot.send_message(
+                    chat_id=config["chat_id"],  # type: ignore
+                    text=text[i:i+4096]
+                )
             await asyncio.sleep(180)  
-        await asyncio.sleep(20)  # Wait before checking the next skin
+        await asyncio.sleep(25)  # Wait before checking the next skin
