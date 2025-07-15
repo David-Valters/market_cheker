@@ -20,12 +20,25 @@ def make_url_icon(url: str) -> str:
 import httpx
 from typing import List
 
+async def post_with_retry(url, payload, headers, retries=3, delay=5):
+    for attempt in range(1, retries + 1):
+        try:
+            async with httpx.AsyncClient(timeout=10) as client:
+                response = await client.post(url, json=payload, headers=headers)
+                response.raise_for_status()
+                return response.json()
+        except httpx.ConnectError as e:
+            logging.warning(f"❌ ConnectError: спроба {attempt}/{retries}")
+            if attempt == retries:
+                raise
+            await asyncio.sleep(delay)
+
 async def get_lowest_price_lots(id: str) -> List[dict]:
     url = "https://api.tgmrkt.io/api/v1/notgames/saling"
     headers = {
         "Authorization": db.get_token() or "",  # type: ignore
         "Content-Type": "application/json",
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:137.0) Gecko/20100101 Firefox/137.0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
         "Origin": "https://cdn.tgmrkt.io",
         "Referer": "https://cdn.tgmrkt.io/"
     }
@@ -46,10 +59,7 @@ async def get_lowest_price_lots(id: str) -> List[dict]:
         "query": None
     }
 
-    async with httpx.AsyncClient(timeout=10) as client:
-        response = await client.post(url, json=payload, headers=headers) #type: ignore
-        response.raise_for_status()
-        data = response.json()
+    data = await post_with_retry(url, payload, headers)
 
     items = data.get("gameItems", [])
     result: List[dict] = []
@@ -149,6 +159,13 @@ async def loop(bot: Bot) -> None:
                     text=f"HTTP error while checking skin {skin['skin_id']}: {e}"
                 )
                 await asyncio.sleep(120)
+        except httpx.ConnectError as e:
+            logger.warning(f"❌ ConnectError: {e}")
+            await bot.send_message(
+                chat_id=config["chat_id"],  # type: ignore
+                text=f"❌ ConnectError while checking skin {skin['skin_id']}: {e}"
+            )
+            await asyncio.sleep(20)
         except httpx.ReadTimeout:
             logger.warning(f"⏱ TIMEOUT: Запит до tgmrkt.io завис на skin_id {skin['skin_id']}")
             await bot.send_message(config["chat_id"], text=f"⚠️ TIMEOUT при перевірці {skin['skin_id']}") # type: ignore
