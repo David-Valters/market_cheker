@@ -220,11 +220,11 @@ async def set_token(message: types.Message):
 
 @router.message(Command("ping"))
 async def ping(message: types.Message):
-    if not cheker.datetime_lascheck:
+    if not cheker.datetime_lascheck_skins:
         await message.answer("Бот ще не здійснював перевірку цін.")
         return
 
-    delta = datetime.now() - cheker.datetime_lascheck
+    delta = datetime.now() - cheker.datetime_lascheck_skins
     time_text = format_timedelta(delta)
 
     await message.answer(f"Бот останній раз перевіряв ціни {time_text}.")

@@ -165,3 +165,22 @@ def get_top_lots(skin_id: str) -> list[str]:
     if row:
         return json.loads(row[0])
     return []
+
+
+def set_feed_cursor(feed_cursor: str):
+    logger.info(f"Setting new cursor: {feed_cursor}.")
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("INSERT OR REPLACE INTO config (key, value) VALUES (?, ?)", ("mrkt_cursor", feed_cursor))
+    conn.commit()
+    conn.close()
+
+def get_feed_cursor() -> Optional[str]:
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT value FROM config WHERE key = ?", ("mrkt_cursor",))
+    row = cursor.fetchone()
+    conn.close()
+    if row:
+        return row[0]
+    return None
