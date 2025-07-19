@@ -218,7 +218,6 @@ async def get_new_feed_lots() -> List[dict]:
             await asyncio.sleep(1)
             r, cursor = await get_feed(cursor)
 
-
     db.set_feed_cursor(new_cursor)
     return result
 
@@ -273,10 +272,11 @@ async def loop(bot: Bot) -> None:
     while True:
         try:
             # ----------
+            current_token = db.get_token()
+
             await feed_check(bot)
             await asyncio.sleep(20)
 
-            current_token = db.get_token()
             await skin_check(bot)
             # ----------
         except httpx.HTTPStatusError as e:
