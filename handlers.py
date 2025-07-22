@@ -1,3 +1,4 @@
+import time
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 from aiogram.types import LinkPreviewOptions
@@ -256,21 +257,28 @@ async def set_token(message: types.Message):
             "Будь ласка, вкажіть token скіна після команди /token (наприклад, /token 1234567890)"
         )
         return
+    
     new_token = args[1].strip()
+    if new_token == db.get_token():
+        await message.answer("⚠️ Такий токен вже встановлено.")
+        return
+    
     db.set_token(new_token)
     await message.answer(f"✅ Токен встановлено")
 
 
 @router.message(Command("ping"))
 async def ping(message: types.Message):
-    if not cheker.datetime_lascheck_skins:
-        await message.answer("Бот ще не здійснював перевірку цін.")
-        return
+    
+    
+    if cheker.datetime_lascheck_skins is None:
+        time_text = "Ще не відбувалася перевірка цін."
+    else:
+        delta = datetime.now() - cheker.datetime_lascheck_skins 
+        time_text = format_timedelta(delta)
 
-    delta = datetime.now() - cheker.datetime_lascheck_skins
-    time_text = format_timedelta(delta)
-
-    await message.answer(f"Бот останній раз перевіряв ціни {time_text}.")
+    message_text = f"Остання перевірка цін: {time_text}\nСтатус: {cheker.status}"
+    await message.answer(message_text)
 
 
 

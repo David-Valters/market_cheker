@@ -3,6 +3,7 @@ import asyncio
 from datetime import datetime, timedelta
 from hmac import new
 import re
+import stat
 from config import config
 import db
 import logging
@@ -11,7 +12,9 @@ import traceback
 import json
 
 logger = logging.getLogger(__name__)
+
 datetime_lascheck_skins = None
+status:str = "*Відсутній*"
 
 
 def make_url_in_market(id):
@@ -189,8 +192,12 @@ async def get_new_feed_lots() -> List[dict]:
     logger.info("Checking for new feed lots...")
     result = []
     old_cursor = db.get_feed_cursor()
+    global status
     r, cursor = await get_feed(None)
+    status = "Зроблене початкове онволення feed."
     new_cursor = r[0]["lot_id"]
+
+    
 
     if not old_cursor:
         result.extend(r)
@@ -215,6 +222,7 @@ async def get_new_feed_lots() -> List[dict]:
                 logger.warning("Too many requests, stopping feed check.")
                 break
             logger.info(f"Checking feed {requests_count}/{max_requests}")
+            status = f"Оновлення feed {requests_count}/{max_requests}..."
             await asyncio.sleep(1)
             r, cursor = await get_feed(cursor)
 
@@ -273,11 +281,13 @@ async def loop(bot: Bot) -> None:
         try:
             # ----------
             current_token = db.get_token()
-
+            global status
+            status = "Пробую оновити feed..."
             await feed_check(bot)
-            await asyncio.sleep(20)
-
+            status = "Feed оновлений, очікуйте 10 сек до запуску перевірки скінів..."
+            await asyncio.sleep(10)
             await skin_check(bot)
+            status = "Перевірка скінів завершена, очікування 25 сек до наступної перевірки..."
             # ----------
         except httpx.HTTPStatusError as e:
             if e.response.status_code == 401:
