@@ -278,18 +278,39 @@ import os
 
 @router.message(Command("shutdown"))
 async def shutdown_cmd(message: types.Message):
-    # Перевірка ID користувача
-    logger.warning(
-        f"[SHUTDOWN] Name: {message.chat.full_name}, ChatId: {message.chat.id}"
-    )
-    if str(message.chat.id) != config["chat_id"]:  # заміни на свій ID
+    if str(message.chat.id) != config["chat_id"]:
         await message.answer("⛔ У тебе немає прав для цієї команди.")
         return
 
-    await message.answer("🔌 Вимикаю ноутбук...")
-    # Вимкнення
-    await asyncio.sleep(0.5)
-    os.system("shutdown /s /t 1")
+    logger.warning(f"[SHUTDOWN REQUEST] Name: {message.chat.full_name}, ChatId: {message.chat.id}")
+
+    # Кнопки підтвердження
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [
+            InlineKeyboardButton(text="✅ Так", callback_data="shutdown_confirm"),
+            InlineKeyboardButton(text="❌ Ні", callback_data="shutdown_cancel"),
+        ]
+    ])
+
+    await message.answer("🔌 Ти справді хочеш вимкнути ноутбук?", reply_markup=keyboard)
+
+
+@router.callback_query(F.data.in_({"shutdown_confirm", "shutdown_cancel"}))
+async def handle_shutdown_confirmation(callback: CallbackQuery):
+    if str(callback.from_user.id) != config["chat_id"]:
+        await callback.answer("⛔ Заборонено.", show_alert=True)
+        return
+
+    if callback.data == "shutdown_confirm":
+        await callback.message.delete()  # type: ignore[union-attr]
+        await callback.message.answer("🛑 Вимикаю ноутбук...") # type: ignore[union-attr]
+        logger.warning(f"[SHUTDOWN CONFIRMED] By {callback.from_user.full_name}")
+        await asyncio.sleep(1)
+        os.system("shutdown /s /t 1")  # для Windows
+    else:
+        await callback.message.delete()  # type: ignore[union-attr]
+        await callback.message.answer("❎ Скасовано.") # type: ignore[union-attr]
+        logger.info(f"[SHUTDOWN CANCELED] By {callback.from_user.full_name}")
 
 
 from aiogram.types import FSInputFile
