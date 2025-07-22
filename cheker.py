@@ -1,20 +1,17 @@
 # from time import sleep
 import asyncio
 from datetime import datetime, timedelta
-from hmac import new
-import re
-import stat
+import os
 from config import config
 import db
 import logging
 from utils import html_link
 import traceback
-import json
 
 logger = logging.getLogger(__name__)
 
 datetime_lascheck_skins = None
-status:str = "*Відсутній*"
+status: str = "*Відсутній*"
 
 
 def make_url_in_market(id):
@@ -197,8 +194,6 @@ async def get_new_feed_lots() -> List[dict]:
     status = "Зроблене початкове онволення feed."
     new_cursor = r[0]["lot_id"]
 
-    
-
     if not old_cursor:
         result.extend(r)
     else:
@@ -292,8 +287,31 @@ async def loop(bot: Bot) -> None:
         except httpx.HTTPStatusError as e:
             if e.response.status_code == 401:
                 last_notif_time = None
+                start_wait = datetime.now()
+                send_warning = True
+
                 while current_token == db.get_token():
                     now = datetime.now()
+                    if send_warning and (now - start_wait) >= timedelta(minutes=25):
+                        logger.warning(
+                            "⚠️The laptop will shut down in 5 minutes if the token is not updated!"
+                        )
+                        await bot.send_message(
+                            chat_id=config["chat_id"],  # type: ignore
+                            text="⚠️Warning: The laptop will shut down in 5 minutes if the token is not updated!!!",
+                        )
+                        send_warning = False
+
+                    if (now - start_wait) >= timedelta(minutes=30):
+                        await bot.send_message(
+                            chat_id=config["chat_id"],  # type: ignore
+                            text="🛑 Вимикаю ноутбук...",
+                        )
+                        await asyncio.sleep(1)
+                        logger.warning("Shutting down the laptop...")
+                        os.system("shutdown /s /t 1")  # для Windows
+                        await asyncio.sleep(5)
+
                     if last_notif_time is None or (now - last_notif_time) > timedelta(
                         minutes=10
                     ):
