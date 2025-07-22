@@ -310,7 +310,16 @@ async def loop(bot: Bot) -> None:
                         await asyncio.sleep(1)
                         logger.warning("Shutting down the laptop...")
                         os.system("shutdown /s /t 1")  # для Windows
-                        await asyncio.sleep(5)
+                        await asyncio.sleep(10)
+                        # Якщо ноутбук не вимкнувся, вимикаємо програму
+                        logger.error("🛑 Ноутбук не вимкнувся, вимикаю програму")
+                        await bot.send_message(
+                            chat_id=config["chat_id"],  # type: ignore
+                            text="🛑 Ноутбук не вимкнувся, вимикаю програму"
+                        )
+                        import sys
+                        sys.exit(1)  # Вимкнути програму                        
+                                                
 
                     if last_notif_time is None or (now - last_notif_time) > timedelta(
                         minutes=10
