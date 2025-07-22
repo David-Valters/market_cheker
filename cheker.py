@@ -2,6 +2,7 @@
 import asyncio
 from datetime import datetime, timedelta
 import os
+from turtle import st
 from config import config
 import db
 import logging
@@ -289,7 +290,7 @@ async def loop(bot: Bot) -> None:
                 last_notif_time = None
                 start_wait = datetime.now()
                 send_warning = True
-
+                status = "Токен не дійсний, очікування оновлення токена..."
                 while current_token == db.get_token():
                     now = datetime.now()
                     if send_warning and (now - start_wait) >= timedelta(minutes=25):
