@@ -305,7 +305,7 @@ async def shutdown_cmd(message: types.Message):
 
 @router.callback_query(F.data.in_({"shutdown_confirm", "shutdown_cancel"}))
 async def handle_shutdown_confirmation(callback: CallbackQuery):
-    if str(callback.from_user.id) != config["chat_id"]:
+    if str(callback.message.chat.id) != config["chat_id"]: # type: ignore[union-attr]
         await callback.answer("⛔ Заборонено.", show_alert=True)
         return
 
