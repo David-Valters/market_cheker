@@ -11,6 +11,8 @@ dependencies = [
     "more-itertools>=10.7.0",
     "python-dotenv>=1.1.1",
     "sqlalchemy>=2.0.41",
+    "selenium>=4.34.2",
+    "webdriver-manager>=4.0.2",
 ]
 
 [dependency-groups]
