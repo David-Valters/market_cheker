@@ -1,4 +1,3 @@
-import time
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 from aiogram.types import LinkPreviewOptions
@@ -35,7 +34,6 @@ from typing import Callable, Awaitable, Dict, Any
 import uuid
 import db
 from cheker import make_url_in_market, make_url_icon
-import cheker
 
 router = Router()
 
@@ -264,7 +262,7 @@ async def set_token(message: types.Message):
         return
     
     db.set_token(new_token)
-    await message.answer(f"✅ Токен встановлено")
+    await message.answer("✅ Токен встановлено")
 
 
 @router.message(Command("ping"))
