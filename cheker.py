@@ -341,9 +341,13 @@ async def processing_skin(bot: Bot, skin_id: str) -> None:
     if old_price == new_top_lots[0]["salePrice"]:
         logger.info(f"Skin {skin["name"]} price has not changed.")
     else:
-        logger.info(f"Skin {skin['name']} price changed from {old_price} to {new_top_lots[0]['salePrice']}.")
+        logger.info(
+            f"Skin {skin['name']} price changed from {old_price} to {new_top_lots[0]['salePrice']}."
+        )
         if first_save_lot and first_save_lot.serial != "unknown":
-            link = html_link(first_save_lot.serial, make_url_in_market(first_save_lot.lot_id))
+            link = html_link(
+                first_save_lot.serial, make_url_in_market(first_save_lot.lot_id)
+            )
             if first_save_lot.serial == new_top_lots[0]["serial"]:
                 mes_info = f"Skin #{link} price changed from {old_price} > {new_top_lots[0]['salePrice']}."
             elif first_save_lot.serial in [
@@ -440,8 +444,11 @@ async def loop(bot: Bot) -> None:
 
             if ids_skins_need_check:
                 status = "Обробка давно не перевірених скінів..."
+                logger.info(f"! Processing skin {len(ids_skins_need_check)}th ...")
                 skin_id = ids_skins_need_check.pop()
                 await processing_skin(bot, skin_id)
+                if not ids_skins_need_check:
+                    logger.info("\n\nAll skins have been checked.\n")
 
             status = "Очікування 25 секунд перед наступною перевіркою..."
         except httpx.HTTPStatusError as e:
