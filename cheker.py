@@ -292,7 +292,7 @@ async def processing_lot(bot: Bot, lot: dict, cache_top_lot: dict) -> bool:
         and target_lot_in_save
         and target_lot_in_save.price != 0
     ):  # price changed
-        mes_info = f"Price changed from {target_lot_in_save.price} > {lot['salePrice']}. {"(This is not the best price)" if best_lot and best_lot["salePrice"] < lot["salePrice"] else ""}"
+        mes_info = f"Skin reLISTING {target_lot_in_save.price} > {lot['salePrice']}. {"(This is not the best price)" if best_lot and best_lot["salePrice"] < lot["salePrice"] else ""}"
     elif lot["type"] == "listing":
         mes_info = f"The skin was LISTING for {lot['salePrice']} {"\n(This is not the best price)" if best_lot and best_lot["salePrice"] < lot["salePrice"] else ""}"
     else:  # sale
