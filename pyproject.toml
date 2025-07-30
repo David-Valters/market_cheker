@@ -8,6 +8,7 @@ dependencies = [
     "aiogram>=3.21.0",
     "alembic>=1.16.4",
     "httpx>=0.28.1",
+    "more-itertools>=10.7.0",
     "python-dotenv>=1.1.1",
     "sqlalchemy>=2.0.41",
 ]

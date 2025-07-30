@@ -337,6 +337,7 @@ dependencies = [
     { name = "aiogram" },
     { name = "alembic" },
     { name = "httpx" },
+    { name = "more-itertools" },
     { name = "python-dotenv" },
     { name = "sqlalchemy" },
 ]
@@ -353,6 +354,7 @@ requires-dist = [
     { name = "aiogram", specifier = ">=3.21.0" },
     { name = "alembic", specifier = ">=1.16.4" },
     { name = "httpx", specifier = ">=0.28.1" },
+    { name = "more-itertools", specifier = ">=10.7.0" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
     { name = "sqlalchemy", specifier = ">=2.0.41" },
 ]
