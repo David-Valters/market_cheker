@@ -308,6 +308,7 @@ async def processing_lot(bot: Bot, lot: dict, cache_top_lot: dict) -> bool:
             f"{i+1}. {new_lot['salePrice']} (#{html_link(new_lot['serial'], make_url_in_market(new_lot['id']))}) {'! N E W !' if new_lot['id'] not in ids_old_lots else ''}\n"
             for i, new_lot in enumerate(new_top_lots)
         ],
+        f"SUPLAY({lot["supply"]})"
     ]
 
     await bot.send_photo(
@@ -369,6 +370,7 @@ async def processing_skin(bot: Bot, skin_id: str) -> None:
                 f"{i+1}. {lot['salePrice']} (#{html_link(lot['serial'], make_url_in_market(lot['id']))}) {'! N E W !' if lot['id'] not in [l.lot_id for l in save_lots] else ''}\n"
                 for i, lot in enumerate(new_top_lots)
             ],
+            f"SUPLAY({new_top_lots[0]["supply"]})"
         ]
 
         skin_photo_url = make_url_icon(new_top_lots[0]["iconUrl"])

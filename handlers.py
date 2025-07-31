@@ -236,7 +236,8 @@ async def handle_info(callback: CallbackQuery):
             # 1: 3.08 (#22)
             f"{i+1}. {lot['salePrice']} (#{html_link(lot['serial'], make_url_in_market(lot['id']) )})\n"
             for i, lot in enumerate(new_lots)
-        ]
+        ],
+        f"SUPLAY({new_lots[0]["supply"]})"
     ]
     mes_text = "\n".join(mes)
     await callback.answer()
