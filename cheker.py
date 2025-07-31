@@ -268,7 +268,7 @@ async def processing_lot(bot: Bot, lot: dict, cache_top_lot: dict) -> bool:
         lot["type"] == "listing"
         and last_save_lot
         and last_save_lot.price != 0
-        and lot["salePrice"] > last_save_lot.price
+        and lot["salePrice"] >= last_save_lot.price
     ):
         logger.info(
             f"Lot {lot['lot_id']} for skin {skin["name"]} price {lot["salePrice"]} not interested."
