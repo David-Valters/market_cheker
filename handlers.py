@@ -232,6 +232,11 @@ async def handle_info(callback: CallbackQuery):
     )
     skin_id = callback.data.split("info:")[1]  # type: ignore[union-attr]
     new_lots = await get_lowest_price_lots(skin_id)
+
+    if not new_lots:
+        await callback.answer("❌ Немає лотів для цього скіна", show_alert=True)
+        return
+
     mes = [
         *[
             # 1: 3.08 (#22)
