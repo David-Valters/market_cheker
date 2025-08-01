@@ -179,7 +179,7 @@ async def inline_handler(query: InlineQuery):
             )
             for item in data_filter
         ]
-    await query.answer(results, cache_time=1000)  # type: ignore[arg-type]
+    await query.answer(results, cache_time=300)  # type: ignore[arg-type]
 
 
 @router.callback_query(F.data.startswith("add:"))
@@ -207,6 +207,7 @@ async def handle_add(callback: CallbackQuery):
             price,
             make_url_icon(data_element.get("iconUrl", "")),
         )
+        cheker.ids_skins_need_check.add(selected_id)  # type: ignore[union-attr]
         await callback.answer(f"✅ Додано до обраного, ціна: {price}", show_alert=False)
     await callback.message.delete()  # type: ignore[union-attr]
 

@@ -3,18 +3,19 @@ import asyncio
 from datetime import datetime, timedelta
 from aiogram import Bot
 import os
-
 from more_itertools import first, last
 from config import config
 import db
 import logging
 from utils import html_link
 import traceback
+import handlers
 
 logger = logging.getLogger(__name__)
 
 datetime_lascheck_skins = None
 status: str = "*Відсутній*"
+ids_skins_need_check: set[str] = set()
 
 
 def make_url_in_market(id):
@@ -29,6 +30,28 @@ def make_url_icon(url: str) -> str:
 import httpx
 from typing import List
 
+async def update_data():
+    logger.info("Updating data from tgmrkt.io...")
+    url = "https://api.tgmrkt.io/api/v1/notgames/game-items-def"
+    headers = {
+        "Authorization": db.get_token() or "",  # type: ignore
+        "Content-Type": "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Origin": "https://cdn.tgmrkt.io",
+        "Referer": "https://cdn.tgmrkt.io/",
+    }
+
+    payload = {
+        "collections": [],
+        "gameIds": [2],
+        "displayTypes": [],
+    }
+
+    new_data = await post_with_retry(url, payload, headers)
+    with open("data.json", "w", encoding="utf-8") as f:
+        import json
+        json.dump(new_data, f, ensure_ascii=False, indent=4)
+    handlers.data = new_data
 
 async def post_with_retry(url, payload, headers, retries=3, delay=5):
     for attempt in range(1, retries + 1):
@@ -414,7 +437,6 @@ async def loop(bot: Bot) -> None:
         await asyncio.sleep(10)  # Wait before checking again
         first_skin = db.get_next_skin_to_check()
 
-    ids_skins_need_check: set[str] = set()
 
     skins = db.get_all_skins()
     ids = [skin["skin_id"] for skin in skins]

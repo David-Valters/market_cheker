@@ -20,7 +20,8 @@ async def main() -> None:
         logger.warning("Database is not initialized, adding legendary skins...")
         await add_legendary_skins()
         logger.info("[+] Database initialized successfully.")
-    db.run_migrations()      
+    db.run_migrations()
+    await cheker.update_data()      
     asyncio.create_task(cheker.loop(bot))
     await dp.start_polling(bot)
 
