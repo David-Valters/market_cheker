@@ -17,10 +17,10 @@ logger = logging.getLogger(__name__)
 
 data_file = "data.json"
 
-data = {}
+data: dict = {}
 
-with open(data_file, "r") as file:
-    data = json.load(file)
+# with open(data_file, "r") as file:
+#     data = json.load(file)
 
 from aiogram import types
 from aiogram.types import InlineQueryResultArticle, InputTextMessageContent, InlineQuery
