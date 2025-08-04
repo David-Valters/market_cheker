@@ -21,8 +21,9 @@ async def main() -> None:
         await add_legendary_skins()
         logger.info("[+] Database initialized successfully.")
     db.run_migrations()
-    # await cheker.update_data()      
-    asyncio.create_task(cheker.loop(bot))
+    if not config["no_loop"]:      
+        await cheker.update_data()
+        asyncio.create_task(cheker.loop(bot))
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
