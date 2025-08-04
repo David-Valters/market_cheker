@@ -46,12 +46,14 @@ async def update_data():
         "gameIds": [2],
         "displayTypes": [],
     }
-
-    new_data = await post_with_retry(url, payload, headers)
-    with open("data.json", "w", encoding="utf-8") as f:
-        import json
-        json.dump(new_data, f, ensure_ascii=False, indent=4)
-    handlers.data = new_data
+    try:
+        new_data = await post_with_retry(url, payload, headers)
+        with open("data.json", "w", encoding="utf-8") as f:
+            import json
+            json.dump(new_data, f, ensure_ascii=False, indent=4)
+        handlers.data = new_data
+    except httpx.HTTPStatusError as e:
+        logger.error(f"HTTP error while updating data: {e}")
 
 async def post_with_retry(url, payload, headers, retries=3, delay=5):
     for attempt in range(1, retries + 1):
