@@ -196,7 +196,10 @@ async def handle_add(callback: CallbackQuery):
         try:
             # price = (await get_sale_prices(selected_id))[0]["price"]
             lot = await get_lowest_price_lots(selected_id)
-            price = lot[0]["salePrice"]
+            if lot:
+                price = lot[0]["salePrice"]
+            else:
+                price = "0"
         except Exception as e:
             logger.error(f"Error getting price for skin {selected_id}: {str(e)}")
             await callback.message.answer(f"❌ Помилка при отриманні ціни: {str(e)}")  # type: ignore[union-attr]
