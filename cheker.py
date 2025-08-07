@@ -10,6 +10,7 @@ import logging
 from utils import html_link
 import traceback
 import handlers
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -47,9 +48,12 @@ async def update_data():
         "displayTypes": [],
     }
     try:
+        # read old data
+        with open("data.json", "r", encoding="utf-8") as f:
+            old_data = json.load(f)
+            handlers.data = old_data
         new_data = await post_with_retry(url, payload, headers)
         with open("data.json", "w", encoding="utf-8") as f:
-            import json
             json.dump(new_data, f, ensure_ascii=False, indent=4)
         handlers.data = new_data
     except httpx.HTTPStatusError as e:
