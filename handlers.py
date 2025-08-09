@@ -285,7 +285,7 @@ async def ping(message: types.Message):
         delta = datetime.now() - cheker.datetime_lascheck_skins 
         time_text = format_timedelta(delta)
 
-    message_text = f"Остання перевірка цін: {time_text}\nСтатус: {cheker.status}"
+    message_text = f"Остання перевірка цін: {time_text}\nСтатус: {cheker.status}\nКількість скінів для перевірки: {len(cheker.ids_skins_need_check)}\n\n"
     await message.answer(message_text)
 
 
