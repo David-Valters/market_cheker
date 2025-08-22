@@ -31,6 +31,23 @@ def make_url_icon(url: str) -> str:
 import httpx
 from typing import List
 
+async def ping():
+    url = config.get("PING_URL")
+    if not url:
+        logger.warning("⚠️ PING_URL is not set in config")
+        return
+
+    try:
+        async with httpx.AsyncClient(timeout=20) as client:
+            response = await client.post(url)
+            response.raise_for_status()
+            logger.info(f"✅ Ping successful: {url} ({response.status_code})")
+    except httpx.HTTPStatusError as e:
+        logger.error(f"❌ Ping failed with status {e.response.status_code} for {url}")
+    except httpx.RequestError as e:
+        logger.error(f"❌ Request error while pinging {url}: {e}")
+
+
 async def update_data():
     logger.info("Updating data from tgmrkt.io...")
     url = "https://api.tgmrkt.io/api/v1/notgames/game-items-def"
@@ -479,7 +496,8 @@ async def loop(bot: Bot) -> None:
                 await processing_skin(bot, skin_id)
                 if not ids_skins_need_check:
                     logger.info("\n\nAll skins have been checked.\n")
-
+            
+            await ping()
             status = "Очікування 25 секунд перед наступною перевіркою..."
         except httpx.HTTPStatusError as e:
             if e.response.status_code == 401:
