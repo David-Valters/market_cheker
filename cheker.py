@@ -547,9 +547,6 @@ async def loop(bot: Bot) -> None:
                         last_notif_time = now
                     await asyncio.sleep(10)
                 continue
-            # elif e.response.status_code == 403:
-            #     logger.error("❌ Access denied. Check your token.")
-            #     await asyncio.sleep(10*60)
             else:
                 logger.error(f"HTTP error while checking skin: {e}")
                 await bot.send_message(
@@ -559,25 +556,27 @@ async def loop(bot: Bot) -> None:
                 await asyncio.sleep(120)
         except httpx.ConnectError as e:
             logger.warning(f"❌ ConnectError: {e}")
-            await bot.send_message(
-                chat_id=config["chat_id"],  # type: ignore
-                text=f"❌ ConnectError while checking skin: {e}",
-            )
             await asyncio.sleep(20)
         except httpx.ReadTimeout as e:
             tb = traceback.format_exc()
             logger.warning("⏱ TIMEOUT: Запит до tgmrkt.io завис на skin_id")
-            await bot.send_message(config["chat_id"], text=f"⚠️ TIMEOUT при перевірці: {e}\n\n{tb}")  # type: ignore
+            try:                
+                await bot.send_message(config["chat_id"], text=f"⚠️ TIMEOUT при перевірці: {e}\n\n{tb}")  # type: ignore
+            except Exception as e:
+                logger.error(f"Error sending timeout message: {e}")
             await asyncio.sleep(20)
             continue
         except Exception as e:
             tb = traceback.format_exc()
             logger.error(f"Error checking skin: {e}\n\n{tb}")
             text = f"Error checking skin: {e}\n\n{tb}"
-            for i in range(0, len(text), 4096):
-                await bot.send_message(
-                    chat_id=config["chat_id"], text=text[i : i + 4096]  # type: ignore
-                )
+            try:
+                for i in range(0, len(text), 4096):
+                    await bot.send_message(
+                        chat_id=config["chat_id"], text=text[i : i + 4096]  # type: ignore
+                    )
+            except Exception as e:
+                logger.error(f"Error sending error message: {e}")
             await asyncio.sleep(180)
         await asyncio.sleep(25)  # Wait before checking the next skin
 
