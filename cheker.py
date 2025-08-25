@@ -62,7 +62,7 @@ async def update_data():
 
     payload = {
         "collections": [],
-        "gameIds": [2],
+        "gameIds": [2,4],
         "displayTypes": [],
     }
     try:
@@ -105,7 +105,7 @@ async def get_lowest_price_lots(id: str) -> List[dict]:
         "count": 20,
         "cursor": "",
         "collectionNames": [],
-        "gameIds": [2],
+        "gameIds": [2,4],
         "displayTypes": [],
         "gameItemDefIds": [id],
         "minPrice": None,
@@ -208,7 +208,7 @@ async def get_feed(cursor: str | None) -> tuple[list[dict[str, str]], str]:
         "count": 20,
         "cursor": cursor or "",
         "collectionNames": [],
-        "gameIds": [2],
+        "gameIds": [2,4],
         "number": None,
         "type": [],
         "ordering": "Latest",
