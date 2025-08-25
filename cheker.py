@@ -2,6 +2,7 @@
 import asyncio
 from datetime import datetime, timedelta
 from aiogram import Bot
+from aiogram.exceptions import TelegramRetryAfter
 import os
 from more_itertools import first, last
 from config import config
@@ -499,6 +500,9 @@ async def loop(bot: Bot) -> None:
             
             await ping()
             status = "Очікування 25 секунд перед наступною перевіркою..."
+        except TelegramRetryAfter as e:
+            logger.warning(f"Telegram flood control, retry after: {e.retry_after}")
+            await asyncio.sleep(e.retry_after + 1)
         except httpx.HTTPStatusError as e:
             if e.response.status_code == 401:
                 last_notif_time = None
