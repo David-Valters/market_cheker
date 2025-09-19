@@ -32,12 +32,14 @@ def make_url_icon(url: str) -> str:
 import httpx
 from typing import List
 
-async def ping():
+
+async def ping(arg=None):
     url = config.get("PING_URL")
     if not url:
         logger.warning("⚠️ PING_URL is not set in config")
         return
-
+    if arg:
+        url = url+'/'+arg
     try:
         async with httpx.AsyncClient(timeout=20) as client:
             response = await client.post(url)
@@ -62,7 +64,7 @@ async def update_data():
 
     payload = {
         "collections": [],
-        "gameIds": [2,4],
+        "gameIds": [2, 4],
         "displayTypes": [],
     }
     try:
@@ -76,6 +78,7 @@ async def update_data():
         handlers.data = new_data
     except httpx.HTTPStatusError as e:
         logger.error(f"HTTP error while updating data: {e}")
+
 
 async def post_with_retry(url, payload, headers, retries=3, delay=5):
     for attempt in range(1, retries + 1):
@@ -105,7 +108,7 @@ async def get_lowest_price_lots(id: str) -> List[dict]:
         "count": 20,
         "cursor": "",
         "collectionNames": [],
-        "gameIds": [2,4],
+        "gameIds": [2, 4],
         "displayTypes": [],
         "gameItemDefIds": [id],
         "minPrice": None,
@@ -208,7 +211,7 @@ async def get_feed(cursor: str | None) -> tuple[list[dict[str, str]], str]:
         "count": 20,
         "cursor": cursor or "",
         "collectionNames": [],
-        "gameIds": [2,4],
+        "gameIds": [2, 4],
         "number": None,
         "type": [],
         "ordering": "Latest",
@@ -318,14 +321,19 @@ async def processing_lot(bot: Bot, lot: dict, cache_top_lot: dict) -> bool:
         and lot["salePrice"] >= last_save_lot.price
     ):
         logger.info(
-            f"Lot {lot['lot_id']} for skin {skin["name"]} price {lot["salePrice"]} not interested."
+            f"Lot {lot['lot_id']} for skin {skin["name"]} #{lot['serial']}, price {lot["salePrice"]} not interested."
         )
         return was_request
 
     if skin_id in cache_top_lot:
         new_top_lots = cache_top_lot[skin_id]
+        logger.info(
+            f"Using cached top lots for skin {skin_id} {skin['name']} #{lot['serial']}."
+        )
     else:
-        logger.info(f"Getting top lots for skin {skin_id}.")
+        logger.info(
+            f"Getting top lots for skin {skin_id} {skin['name']} #{lot['serial']}."
+        )
         new_top_lots = (await get_lowest_price_lots(skin_id))[:5]
         cache_top_lot[skin_id] = new_top_lots
         db.update_lots(skin_id, new_top_lots)
@@ -355,7 +363,7 @@ async def processing_lot(bot: Bot, lot: dict, cache_top_lot: dict) -> bool:
             f"{i+1}. {new_lot['salePrice']} (#{html_link(new_lot['serial'], make_url_in_market(new_lot['id']))}) {'! N E W !' if new_lot['id'] not in ids_old_lots else ''}\n"
             for i, new_lot in enumerate(new_top_lots)
         ],
-        f"SUPLAY({lot["supply"]})"
+        f"SUPLAY({lot["supply"]})",
     ]
 
     await bot.send_photo(
@@ -364,6 +372,8 @@ async def processing_lot(bot: Bot, lot: dict, cache_top_lot: dict) -> bool:
         caption="\n".join(mes),
         parse_mode="HTML",
     )
+
+    logger.debug(f"Message sent: {' '.join(mes)}")
     db.mark_skin_checked(skin_id)
     return was_request
 
@@ -417,7 +427,7 @@ async def processing_skin(bot: Bot, skin_id: str) -> None:
                 f"{i+1}. {lot['salePrice']} (#{html_link(lot['serial'], make_url_in_market(lot['id']))}) {'! N E W !' if lot['id'] not in [l.lot_id for l in save_lots] else ''}\n"
                 for i, lot in enumerate(new_top_lots)
             ],
-            f"SUPLAY({new_top_lots[0]["supply"]})"
+            f"SUPLAY({new_top_lots[0]["supply"]})",
         ]
 
         skin_photo_url = make_url_icon(new_top_lots[0]["iconUrl"])
@@ -439,7 +449,9 @@ async def processing_skin(bot: Bot, skin_id: str) -> None:
 async def loop(bot: Bot) -> None:
     global status
     logger.info("Starting skin price check loop...")
-    # sem mes bot runing
+    await bot.send_message(
+        chat_id=config["chat_id"], text="✅ Бот запущено"  # type: ignore
+    )
     if not db.get_token():
         logger.error("Token is not set. Please set the token using /token command.")
         status = "Очікування встановлення токена..."
@@ -447,9 +459,6 @@ async def loop(bot: Bot) -> None:
             chat_id=config["chat_id"],  # type: ignore
             text="❗ Токен не встановлено. Будь ласка, встановіть токен за допомогою команди /token.",
         )
-    await bot.send_message(
-        chat_id=config["chat_id"], text="✅ Бот запущено"  # type: ignore
-    )
     while not db.get_token():
         logger.info("Waiting for token to be set...")
         await asyncio.sleep(10)
@@ -460,7 +469,6 @@ async def loop(bot: Bot) -> None:
         logger.info("No more skins to check.")
         await asyncio.sleep(10)  # Wait before checking again
         first_skin = db.get_next_skin_to_check()
-
 
     skins = db.get_all_skins()
     ids = [skin["skin_id"] for skin in skins]
@@ -499,7 +507,7 @@ async def loop(bot: Bot) -> None:
                     logger.info("\n\nAll skins have been checked.\n")
             
             await ping()
-            status = "Очікування 25 секунд перед наступною перевіркою..."
+            status = "Очікування 15 секунд перед наступною перевіркою..."
         except TelegramRetryAfter as e:
             logger.warning(f"Telegram flood control, retry after: {e.retry_after}")
             await asyncio.sleep(e.retry_after + 1)
@@ -509,6 +517,7 @@ async def loop(bot: Bot) -> None:
                 start_wait = datetime.now()
                 send_warning = True
                 status = "Токен не дійсний, очікування оновлення токена..."
+                await ping("fail")
                 while current_token == db.get_token():
                     now = datetime.now()
                     if send_warning and (now - start_wait) >= timedelta(minutes=25):
@@ -564,7 +573,7 @@ async def loop(bot: Bot) -> None:
         except httpx.ReadTimeout as e:
             tb = traceback.format_exc()
             logger.warning("⏱ TIMEOUT: Запит до tgmrkt.io завис на skin_id")
-            try:                
+            try:
                 await bot.send_message(config["chat_id"], text=f"⚠️ TIMEOUT при перевірці: {e}\n\n{tb}")  # type: ignore
             except Exception as e:
                 logger.error(f"Error sending timeout message: {e}")
@@ -582,7 +591,7 @@ async def loop(bot: Bot) -> None:
             except Exception as e:
                 logger.error(f"Error sending error message: {e}")
             await asyncio.sleep(180)
-        await asyncio.sleep(25)  # Wait before checking the next skin
+        await asyncio.sleep(15)  # Wait before checking the next skin
 
 
 # bot = Bot(token=config["TOKEN_BOT"])  # type: ignore

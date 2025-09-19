@@ -341,9 +341,11 @@ async def send_logs(message: types.Message):
         await message.answer("⛔ У тебе немає прав для цієї команди.")
         return
 
-    log_path = "app.log"
+    # log_path = "app.log"
+    files = [os.path.join("logs", f) for f in os.listdir("logs")]
+    log_path = max(files, key=os.path.getctime) if files else None
 
-    if not os.path.exists(log_path):
+    if not log_path or not os.path.exists(log_path):
         await message.answer("⚠️ Файл логів не знайдено.")
         return
 
