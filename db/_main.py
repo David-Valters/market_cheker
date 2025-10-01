@@ -55,6 +55,10 @@ def set_token(token: str):
         "INSERT OR REPLACE INTO config (key, value) VALUES (?, ?)",
         ("mrkt_token", token),
     )
+    cursor.execute(
+        "INSERT OR REPLACE INTO config (key, value) VALUES (?, ?)",
+        ("mrkt_token_time", datetime.now().isoformat()),
+    )
     conn.commit()
     conn.close()
 
@@ -69,6 +73,23 @@ def get_token() -> Optional[str]:
         return row[0]
     return None
 
+
+def get_token_time() -> Optional[datetime]:
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT value FROM config WHERE key = ?", ("mrkt_token_time",))
+    row = cursor.fetchone()
+    conn.close()
+    if row:
+        return datetime.fromisoformat(row[0])
+    return None
+
+def delete_token_time():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM config WHERE key = ?", ("mrkt_token_time",))
+    conn.commit()
+    conn.close()
 
 def add_skin(skin_id: str, name: str, price: float, icon_url: str):
     conn = sqlite3.connect(DB_PATH)

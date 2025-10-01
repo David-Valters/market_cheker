@@ -506,6 +506,16 @@ async def loop(bot: Bot) -> None:
                 if not ids_skins_need_check:
                     logger.info("\n\nAll skins have been checked.\n")
             
+            token_time = db.get_token_time()
+            #warning that the token will expire in 10 minutes
+            if token_time and (datetime.now() - token_time) > timedelta(hours=3, minutes=47):
+                logger.warning("⚠️ Token will expire in 10 minutes!")
+                await bot.send_message(
+                    chat_id=config["chat_id"],  # type: ignore
+                    text="⚠️ Warning: Token will expire in 10 minutes! Please update the token using /token command.",
+                )
+                db.delete_token_time()                
+            
             await ping()
             status = "Очікування 15 секунд перед наступною перевіркою..."
         except TelegramRetryAfter as e:
