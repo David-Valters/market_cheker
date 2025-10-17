@@ -69,8 +69,10 @@ def get_init_data() -> str:
     op.add_argument("--disable-extensions")
     op.add_argument("--no-sandbox")
     op.add_argument("--user-data-dir=" + PROFILE_DIR)
-    op.add_argument("--headless")
     op.add_argument("--profile-directory=Default")
+    
+    if not config.get("HEADLESS_MODE_OFF"):
+        op.add_argument("--headless")
 
     driver = webdriver.Chrome(options=op)
 
