@@ -22,6 +22,16 @@ BUTTON_SELECTOR = "div.bubbles-group:nth-child(6) > div:nth-child(1) > div:nth-c
 PROFILE_DIR = config["PROFILE_PATH"] if "PROFILE_PATH" in config and config["PROFILE_PATH"] else str(Path.home() / ".chrome_selenium_profile")
 TIMEOUT = 40
 
+import os, shutil, time
+
+for name in ["SingletonLock", "SingletonCookie", "SingletonSocket", "SingletonSharedMemory"]:
+    f = os.path.join(PROFILE_DIR, name)
+    if os.path.exists(f):
+        try:
+            os.remove(f)
+        except:
+            pass
+
 options = webdriver.ChromeOptions()
 
 
