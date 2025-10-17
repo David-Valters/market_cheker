@@ -78,7 +78,7 @@ def get_init_data() -> str:
 
     wait = WebDriverWait(driver, TIMEOUT)
 
-    driver.get("https://web.telegram.org/#@mrkt")
+    driver.get("https://web.telegram.org/k/#@mrkt")
 
     button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, BUTTON_SELECTOR)))
 
@@ -130,7 +130,7 @@ async def get_new_token() -> str:
 if __name__ == "__main__":
     print(f"Using profile directory: {PROFILE_DIR}")
     driver = webdriver.Chrome(options=options)
-    driver.get("https://web.telegram.org/#@mrkt")
+    driver.get("https://web.telegram.org/k/#@mrkt")
     input("Натисніть Enter після входу в обліковий запис Telegram у відкритому вікні браузера...")
     try:
         driver.quit()
