@@ -18,7 +18,7 @@ from config import config
 
 # logger = logging.getLogger(__name__)
 
-BUTTON_SELECTOR = "div.bubbles-group:nth-child(6) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > button:nth-child(1)"
+BUTTON_SELECTOR = ".new-message-bot-commands"
 PROFILE_DIR = config["PROFILE_PATH"] if "PROFILE_PATH" in config and config["PROFILE_PATH"] else str(Path.home() / ".chrome_selenium_profile")
 TIMEOUT = 40
 
