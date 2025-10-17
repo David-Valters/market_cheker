@@ -1,9 +1,11 @@
 from aiogram import Router, F
 from aiogram.types import CallbackQuery
 from aiogram.types import LinkPreviewOptions
+from aiogram.types import FSInputFile
 
 # read json from data.json
-import json
+# import json
+import os
 from aiogram.utils.formatting import Text, Bold
 from config import config
 from cheker import get_lowest_price_lots
@@ -276,9 +278,7 @@ async def set_token(message: types.Message):
 
 
 @router.message(Command("ping"))
-async def ping(message: types.Message):
-    
-    
+async def ping(message: types.Message):        
     if cheker.datetime_lascheck_skins is None:
         time_text = "Ще не відбувалася перевірка цін."
     else:
@@ -288,9 +288,6 @@ async def ping(message: types.Message):
     message_text = f"Остання перевірка цін: {time_text}\nСтатус: {cheker.status}\nКількість скінів для перевірки: {len(cheker.ids_skins_need_check)}\n\n"
     await message.answer(message_text)
 
-
-
-import os
 
 @router.message(Command("shutdown"))
 async def shutdown_cmd(message: types.Message):
@@ -328,8 +325,6 @@ async def handle_shutdown_confirmation(callback: CallbackQuery):
         await callback.message.answer("❎ Скасовано.") # type: ignore[union-attr]
         logger.info(f"[SHUTDOWN CANCELED] By {callback.from_user.full_name}")
 
-
-from aiogram.types import FSInputFile
 
 
 @router.message(Command("log"))

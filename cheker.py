@@ -1,6 +1,7 @@
 # from time import sleep
 import asyncio
 from datetime import datetime, timedelta
+import time
 from aiogram import Bot
 from aiogram.exceptions import TelegramRetryAfter
 import os
@@ -8,10 +9,13 @@ from more_itertools import first, last
 from config import config
 import db
 import logging
-from utils import html_link
+from utils import html_link, post_with_retry, send_ping_request
 import traceback
 import handlers
 import json
+from typing import List
+import httpx
+from token_maker import get_new_token
 
 logger = logging.getLogger(__name__)
 
@@ -29,26 +33,6 @@ def make_url_icon(url: str) -> str:
     return f"https://cdn.tgmrkt.io/{url}"
 
 
-import httpx
-from typing import List
-
-
-async def ping(arg=None):
-    url = config.get("PING_URL")
-    if not url:
-        logger.warning("⚠️ PING_URL is not set in config")
-        return
-    if arg:
-        url = url+'/'+arg
-    try:
-        async with httpx.AsyncClient(timeout=20) as client:
-            response = await client.post(url)
-            response.raise_for_status()
-            logger.info(f"✅ Ping successful: {url} ({response.status_code})")
-    except httpx.HTTPStatusError as e:
-        logger.error(f"❌ Ping failed with status {e.response.status_code} for {url}")
-    except httpx.RequestError as e:
-        logger.error(f"❌ Request error while pinging {url}: {e}")
 
 
 async def update_data():
@@ -68,30 +52,17 @@ async def update_data():
         "displayTypes": [],
     }
     try:
-        # read old data
-        with open("data.json", "r", encoding="utf-8") as f:
-            old_data = json.load(f)
-            handlers.data = old_data
+        # read old data if exists
+        if os.path.exists("data.json"):
+            with open("data.json", "r", encoding="utf-8") as f:
+                old_data = json.load(f)
+                handlers.data = old_data
         new_data = await post_with_retry(url, payload, headers)
         with open("data.json", "w", encoding="utf-8") as f:
             json.dump(new_data, f, ensure_ascii=False, indent=4)
         handlers.data = new_data
     except httpx.HTTPStatusError as e:
         logger.error(f"HTTP error while updating data: {e}")
-
-
-async def post_with_retry(url, payload, headers, retries=3, delay=5):
-    for attempt in range(1, retries + 1):
-        try:
-            async with httpx.AsyncClient(timeout=20) as client:
-                response = await client.post(url, json=payload, headers=headers)
-                response.raise_for_status()
-                return response.json()
-        except httpx.ConnectError:
-            logging.warning(f"❌ ConnectError: спроба {attempt}/{retries}")
-            if attempt == retries:
-                raise
-            await asyncio.sleep(delay)
 
 
 async def get_lowest_price_lots(id: str) -> List[dict]:
@@ -277,32 +248,6 @@ async def get_new_feed_lots(max_requests=10) -> tuple[List[dict], bool]:
     return result, is_find_cursor
 
 
-# async def feed_check_old(bot: Bot) -> None:
-#     lots = await get_new_feed_lots()
-#     for lot in lots[::-1]:
-#         skin_id = lot["gameItemDefId"]
-#         skin = db.get_skin(skin_id)
-#         if not skin:
-#             continue
-#         mes: list[str] = [
-#             f"{lot["name"]} #{lot["serial"]}",
-#             (
-#                 f"{html_link("Listing",make_url_in_market(lot["id"]))} for {lot["salePrice"]}"
-#                 if lot["type"] == "listing"
-#                 else f"{html_link("Sale",make_url_in_market(lot["id"]))} for {lot["salePrice"]}"
-#             ),
-#             "",
-#             "(fast info from feed)",
-#         ]
-#         await bot.send_photo(
-#             photo=make_url_icon(lot["iconUrl"]),
-#             chat_id=config["chat_id"],  # type: ignore
-#             caption="\n".join(mes),
-#             parse_mode="HTML",
-#         )
-#         logger.info(f"New lot: {skin_id} - {lot['salePrice']} ({lot['type']})")
-
-
 async def processing_lot(bot: Bot, lot: dict, cache_top_lot: dict) -> bool:
     skin_id = lot["gameItemDefId"]
     skin = db.get_skin(skin_id)
@@ -448,6 +393,7 @@ async def processing_skin(bot: Bot, skin_id: str) -> None:
 
 async def loop(bot: Bot) -> None:
     global status
+    time_token_refresh_attempt:datetime|None = None
     logger.info("Starting skin price check loop...")
     await bot.send_message(
         chat_id=config["chat_id"], text="✅ Бот запущено"  # type: ignore
@@ -455,10 +401,21 @@ async def loop(bot: Bot) -> None:
     if not db.get_token():
         logger.error("Token is not set. Please set the token using /token command.")
         status = "Очікування встановлення токена..."
-        await bot.send_message(
-            chat_id=config["chat_id"],  # type: ignore
-            text="❗ Токен не встановлено. Будь ласка, встановіть токен за допомогою команди /token.",
-        )
+        try:
+            new_token = await get_new_token()
+            db.set_token(new_token)
+            logger.info("Token updated successfully.")
+            await bot.send_message(
+                chat_id=config["chat_id"],  # type: ignore
+                text="✅ Token updated successfully.",
+            )
+        except Exception as e:
+            logger.error(f"Error updating token: {e}")
+            time_token_refresh_attempt = datetime.now()
+            await bot.send_message(
+                chat_id=config["chat_id"],  # type: ignore
+                text="❌ Error updating token, more details in log.",
+            )
     while not db.get_token():
         logger.info("Waiting for token to be set...")
         await asyncio.sleep(10)
@@ -474,6 +431,8 @@ async def loop(bot: Bot) -> None:
     ids = [skin["skin_id"] for skin in skins]
     ids_skins_need_check.update(ids)
     global datetime_lascheck_skins
+
+    # time of the last attempt to refresh the token    
 
     while True:
         try:
@@ -505,29 +464,78 @@ async def loop(bot: Bot) -> None:
                 await processing_skin(bot, skin_id)
                 if not ids_skins_need_check:
                     logger.info("\n\nAll skins have been checked.\n")
-            
+
             token_time = db.get_token_time()
-            #warning that the token will expire in 10 minutes
-            if token_time and (datetime.now() - token_time) > timedelta(hours=3, minutes=47):
+            # warning that the token will expire in 10 minutes
+            if (
+                not token_time
+                or token_time
+                and (datetime.now() - token_time) > timedelta(hours=3, minutes=00)
+                and (
+                    not time_token_refresh_attempt
+                    or (datetime.now() - time_token_refresh_attempt)
+                    > timedelta(minutes=30)
+                )
+            ):
+                logger.info("Updating token...")
+                try:
+                    new_token = await get_new_token()
+                    db.set_token(new_token)
+                    logger.info("Token updated successfully.")
+                    await bot.send_message(
+                        chat_id=config["chat_id"],  # type: ignore
+                        text="✅ Token updated successfully.",
+                    )
+                except Exception as e:
+                    logger.error(f"Error updating token: {e}")
+                    time_token_refresh_attempt = datetime.now()
+                    await bot.send_message(
+                        chat_id=config["chat_id"],  # type: ignore
+                        text="❌ Error updating token, more details in log.",
+                    )
+
+            if token_time and (datetime.now() - token_time) > timedelta(
+                hours=3, minutes=47
+            ):
                 logger.warning("⚠️ Token will expire in 10 minutes!")
                 await bot.send_message(
                     chat_id=config["chat_id"],  # type: ignore
                     text="⚠️ Warning: Token will expire in 10 minutes! Please update the token using /token command.",
                 )
-                db.delete_token_time()                
-            
-            await ping()
+                db.delete_token_time()
+
+            await send_ping_request()
             status = "Очікування 15 секунд перед наступною перевіркою..."
         except TelegramRetryAfter as e:
             logger.warning(f"Telegram flood control, retry after: {e.retry_after}")
             await asyncio.sleep(e.retry_after + 1)
         except httpx.HTTPStatusError as e:
             if e.response.status_code == 401:
+                if not time_token_refresh_attempt or (
+                    datetime.now() - time_token_refresh_attempt
+                ) > timedelta(minutes=30):
+                    logger.info("Updating token...")
+                    try:
+                        new_token = await get_new_token()
+                        db.set_token(new_token)
+                        logger.info("Token updated successfully.")
+                        await bot.send_message(
+                            chat_id=config["chat_id"],  # type: ignore
+                            text="✅ Token updated successfully.",
+                        )
+                    except Exception as ee:
+                        logger.error(f"Error updating token: {ee}")
+                        time_token_refresh_attempt = datetime.now()
+                        await bot.send_message(
+                            chat_id=config["chat_id"],  # type: ignore
+                            text="❌ Error updating token, more details in log.",
+                        )
+
                 last_notif_time = None
                 start_wait = datetime.now()
                 send_warning = True
                 status = "Токен не дійсний, очікування оновлення токена..."
-                await ping("fail")
+                await send_ping_request("fail")
                 while current_token == db.get_token():
                     now = datetime.now()
                     if send_warning and (now - start_wait) >= timedelta(minutes=25):

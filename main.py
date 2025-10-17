@@ -26,7 +26,7 @@ async def main() -> None:
         logger.info("[+] Database initialized successfully.")
     db.run_migrations()
     await cheker.update_data()
-    if not "no_loop" in config:
+    if "no_loop" not in config:
         asyncio.create_task(cheker.loop(bot))
     else:
         logger.warning("no_loop is set to True, skipping the loop task.")
