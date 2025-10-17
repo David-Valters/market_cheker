@@ -39,7 +39,7 @@ options.add_argument("--start-maximized")
 options.add_argument("--disable-extensions")
 options.add_argument("--no-sandbox")
 options.add_argument("--user-data-dir=" + PROFILE_DIR)
-
+options.add_argument("--profile-directory=Default")
 
 def is_browser_open(driver: WebDriver) -> bool:
     try:
@@ -70,6 +70,7 @@ def get_init_data() -> str:
     op.add_argument("--no-sandbox")
     op.add_argument("--user-data-dir=" + PROFILE_DIR)
     op.add_argument("--headless")
+    op.add_argument("--profile-directory=Default")
 
     driver = webdriver.Chrome(options=op)
 
@@ -128,9 +129,11 @@ if __name__ == "__main__":
     print(f"Using profile directory: {PROFILE_DIR}")
     driver = webdriver.Chrome(options=options)
     driver.get("https://web.telegram.org/#@mrkt")
-    while is_browser_open(driver):
+    input("Натисніть Enter після входу в обліковий запис Telegram у відкритому вікні браузера...")
+    try:
+        driver.quit()
+    except:
         pass
-    driver.quit()
     print("Пробую отримати токен...")
     import asyncio
     token = asyncio.run(get_new_token())
