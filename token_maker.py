@@ -121,3 +121,7 @@ if __name__ == "__main__":
     while is_browser_open(driver):
         pass
     driver.quit()
+    print("Пробую отримати токен...")
+    import asyncio
+    token = asyncio.run(get_new_token())
+    print(f"Отримано токен: {token}")
