@@ -410,7 +410,7 @@ async def loop(bot: Bot) -> None:
                 text="✅ Token updated successfully.",
             )
         except Exception as e:
-            logger.error(f"Error updating token: {e}")
+            logger.exception("Error updating token")
             time_token_refresh_attempt = datetime.now()
             await bot.send_message(
                 chat_id=config["chat_id"],  # type: ignore
@@ -487,7 +487,7 @@ async def loop(bot: Bot) -> None:
                         text="✅ Token updated successfully.",
                     )
                 except Exception as e:
-                    logger.error(f"Error updating token: {e}")
+                    logger.exception("Error updating token")
                     time_token_refresh_attempt = datetime.now()
                     await bot.send_message(
                         chat_id=config["chat_id"],  # type: ignore
@@ -524,7 +524,7 @@ async def loop(bot: Bot) -> None:
                             text="✅ Token updated successfully.",
                         )
                     except Exception as ee:
-                        logger.error(f"Error updating token: {ee}")
+                        logger.exception("Error updating token")
                         time_token_refresh_attempt = datetime.now()
                         await bot.send_message(
                             chat_id=config["chat_id"],  # type: ignore
