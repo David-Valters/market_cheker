@@ -75,31 +75,39 @@ def get_init_data() -> str:
     if not config.get("HEADLESS_MODE_OFF", False):
         op.add_argument("--headless")
 
-    driver = webdriver.Chrome(options=op)
-
-    wait = WebDriverWait(driver, TIMEOUT)
-
-    driver.get("https://web.telegram.org/k/#@mrkt")
-
-    button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, BUTTON_SELECTOR)))
-
     try:
-        button.click()
-    except Exception as e:
-        print("Could not click the button directly:", e)
-        # fallback: element covered / not clickable -> click via JS
-        driver.execute_script("arguments[0].click();", button)
+        driver = webdriver.Chrome(options=op)
 
-    iframe_element = wait.until(
-        EC.visibility_of_element_located(
-            (By.XPATH, "/html/body/div[8]/div/div[2]/div/div/iframe")
+        wait = WebDriverWait(driver, TIMEOUT)
+
+        driver.get("https://web.telegram.org/k/#@mrkt")
+
+        button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, BUTTON_SELECTOR)))
+
+        try:
+            button.click()
+        except Exception as e:
+            print("Could not click the button directly:", e)
+            # fallback: element covered / not clickable -> click via JS
+            driver.execute_script("arguments[0].click();", button)
+
+        iframe_element = wait.until(
+            EC.visibility_of_element_located(
+                (By.XPATH, "/html/body/div[8]/div/div[2]/div/div/iframe")
+            )
         )
-    )
-    # iframe_element = driver.find_element(By.XPATH, "/html/body/div[8]/div/div[2]/div/div/iframe")
+        # iframe_element = driver.find_element(By.XPATH, "/html/body/div[8]/div/div[2]/div/div/iframe")
 
-    src_attribute = iframe_element.get_attribute("src")
-
-    driver.quit()
+        src_attribute = iframe_element.get_attribute("src")
+        driver.quit()
+    except Exception as e:
+        print("Error during Selenium operation:", e)
+        traceback.print_exc()
+        try:
+            driver.quit()
+        except:
+            pass
+        raise e
     if src_attribute is None:
         raise ValueError("src attribute is None")
     url = unquote(src_attribute)
