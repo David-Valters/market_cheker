@@ -477,7 +477,7 @@ async def loop(bot: Bot) -> None:
                     > timedelta(minutes=30)
                 )
             ):
-                logger.info("Updating token...")
+                logger.info("Time to updating token...")
                 try:
                     new_token = await get_new_token()
                     db.set_token(new_token)
@@ -511,6 +511,7 @@ async def loop(bot: Bot) -> None:
             await asyncio.sleep(e.retry_after + 1)
         except httpx.HTTPStatusError as e:
             if e.response.status_code == 401:
+                logger.error(f"📛 TOKEN EXPIRED OR INVALID 📛; old token installation time: {db.get_token_time()}")
                 if not time_token_refresh_attempt or (
                     datetime.now() - time_token_refresh_attempt
                 ) > timedelta(minutes=30):
@@ -523,6 +524,8 @@ async def loop(bot: Bot) -> None:
                             chat_id=config["chat_id"],  # type: ignore
                             text="✅ Token updated successfully.",
                         )
+                        await asyncio.sleep(5)
+                        continue
                     except Exception as ee:
                         logger.exception("Error updating token")
                         time_token_refresh_attempt = datetime.now()
